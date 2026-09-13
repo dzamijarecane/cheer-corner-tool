@@ -11,13 +11,18 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // forced with STATIC_BUILD=1 or disabled with STATIC_BUILD=0.
 const staticFlag = process.env["STATIC_BUILD"];
 const insideLovable = Boolean(process.env["LOVABLE_ASSETS_ENDPOINT_URL"]);
-const isStatic = staticFlag === "1" || (staticFlag !== "0" && !insideLovable);
+const isBuildCommand = process.argv.includes("build");
+const isStatic =
+  isBuildCommand &&
+  (staticFlag === "1" || (staticFlag !== "0" && !insideLovable));
 
 export default defineConfig({
-  // No server runtime is needed for the static output.
-  nitro: isStatic ? false : undefined,
-  tanstackStart: isStatic
-    ? { prerender: { enabled: true, crawlLinks: true } }
-    : // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-      { server: { entry: "server" } },
+  // Static mode must only affect production builds. Enabling it during `vite
+  // dev` disables parts of the live preview pipeline and drops its connection.
+  ...(isStatic
+    ? {
+        nitro: false,
+        tanstackStart: { prerender: { enabled: true, crawlLinks: true } },
+      }
+    : {}),
 });
