@@ -80,7 +80,7 @@ function Home() {
 
       {/* Tools */}
       <section className="py-20">
-        <div className="mx-auto max-w-6xl px-6 grid gap-6 sm:grid-cols-3">
+        <div className="mx-auto max-w-6xl px-6 grid gap-6 sm:grid-cols-3" data-reveal-stagger>
           {[
             { to: "/qibla" as const, icon: "qibla", t: "Kibla i tesbih", d: "Smjer Kible i brojač zikra." },
             { to: "/quran" as const, icon: "book", t: "Kur'an i dove", d: "Kratke sure i svakodnevne dove." },
@@ -89,6 +89,7 @@ function Home() {
             <Link
               key={c.to}
               to={c.to}
+              data-tilt
               className="group relative rounded-2xl border border-border bg-card p-8 pt-10 hover:shadow-[var(--shadow-soft)] hover:-translate-y-1 transition"
             >
               <span className="arch-sm grid h-16 w-12 place-items-center bg-primary text-[color:var(--gold)] transition group-hover:shadow-[var(--shadow-glow)]">
@@ -106,7 +107,7 @@ function Home() {
 
       {/* Welcome */}
       <section className="pb-24">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-[0.9fr_1.1fr] gap-14 items-center">
+        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-[0.9fr_1.1fr] gap-14 items-center" data-reveal-stagger>
           <div className="relative mx-auto w-full max-w-sm">
             <div className="arch absolute -inset-3 border border-[var(--gold)]/60" aria-hidden />
             <img
@@ -153,7 +154,7 @@ function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(15_26_43/0.92)_0%,rgb(15_26_43/0.75)_45%,rgb(15_26_43/0.2)_100%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 text-primary-foreground">
+        <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 text-primary-foreground" data-reveal>
           <p className="font-display text-3xl md:text-5xl leading-snug max-w-xl">
             „Allahu su najdraža mjesta na Zemlji džamije.“
           </p>
@@ -166,21 +167,21 @@ function Home() {
       {/* What we offer */}
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="max-w-2xl mb-12">
+          <div className="max-w-2xl mb-12" data-reveal>
             <p className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[color:var(--wood)] mb-5">
               <span className="h-px w-10 bg-[var(--wood)]" aria-hidden />
               Šta nudimo
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-primary">Mjesto za svaki dio sedmice.</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5" data-reveal-stagger>
             {[
               { t: "Dnevni namazi", d: "Od sabaha do jacije, svaki dan u godini." },
               { t: "Kur'an i učenje", d: "Sedmični časovi Kur'ana, za sve uzraste i nivoe." },
               { t: "Događaji zajednice", d: "Iftari, bajramske proslave i predavanja." },
               { t: "Zekat i sadaka", d: "Sakupljanje i raspodjela zekata, sadake i pomoći u hrani onima kojima je potrebna." },
             ].map((f) => (
-              <article key={f.t} className="rounded-2xl bg-card border border-border p-7 border-t-4 border-t-[var(--gold)] hover:shadow-[var(--shadow-soft)] transition">
+              <article key={f.t} data-tilt className="rounded-2xl bg-card border border-border p-7 border-t-4 border-t-[var(--gold)] hover:shadow-[var(--shadow-soft)] transition">
                 <h3 className="font-display text-2xl text-primary mb-3">{f.t}</h3>
                 <p className="text-muted-foreground leading-relaxed">{f.d}</p>
               </article>
@@ -248,7 +249,9 @@ function PrayerWindows() {
           return (
             <div
               key={p.name}
-              className={`arch px-1 pt-8 pb-5 sm:pt-12 sm:pb-6 text-center transition ${
+              data-tilt="10"
+              style={{ animationDelay: `${i * 90}ms` }}
+              className={`window-open arch px-1 pt-8 pb-5 sm:pt-12 sm:pb-6 text-center transition ${
                 next
                   ? "bg-[var(--gold)] text-primary shadow-[var(--shadow-glow)]"
                   : "bg-white/[0.07] border border-white/15 backdrop-blur-sm"

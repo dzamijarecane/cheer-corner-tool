@@ -27,7 +27,7 @@ function About() {
         description={"\n"}
       />
       <section className="py-20">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-14 items-start">
+        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-14 items-start" data-reveal-stagger>
           <img src={exteriorAsset.url} alt="Unutrašnjost džamije Rečane" width={1400} height={900} loading="lazy" className="rounded-xl shadow-[var(--shadow-soft)]" />
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
             <p>
@@ -50,7 +50,7 @@ function About() {
       <section className="py-20 bg-secondary/50 border-y border-border/60">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="font-display text-4xl mb-12 text-center">Naše vrijednosti</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8" data-reveal-stagger>
             {[
               { t: "Vjera", d: "Utemeljeni u Kur'anu i Sunnetu, trudimo se ibadetiti Allahu s iskrenošću." },
               { t: "Znanje", d: "Vjerujemo da je učenje doživotna obaveza i radost. Svi su dobrodošli da uče s nama." },

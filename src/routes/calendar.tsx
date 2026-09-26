@@ -37,12 +37,13 @@ function CalendarPage() {
           </div>
 
           <h2 className="mt-14 font-display text-3xl">Naredni mubarek dani</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2" data-reveal-stagger>
             {holidays.map((h) => {
               const d = daysUntil(h.gregorian, today);
               return (
                 <article
                   key={`${h.name}-${h.gregorianLabel}`}
+                  data-tilt="6"
                   className="rounded-xl border border-border/60 bg-card p-6 hover:shadow-[var(--shadow-soft)] transition"
                 >
                   <div className="flex items-start justify-between gap-4">

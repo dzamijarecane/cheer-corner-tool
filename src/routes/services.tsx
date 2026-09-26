@@ -35,9 +35,9 @@ function Services() {
         description="Od svakodnevnog do najvažnijih trenutaka — tu smo za momente koji su bitni."
       />
       <section className="py-16">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-6">
+        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-6" data-reveal-stagger>
           {SERVICES.map((s, i) => (
-            <article key={s.t} className="rounded-xl bg-card border border-border/60 p-8">
+            <article key={s.t} data-tilt="6" className="rounded-xl bg-card border border-border/60 p-8 hover:shadow-[var(--shadow-soft)] transition">
               <div className="text-xs font-mono text-[color:var(--gold)] mb-4">0{i + 1}</div>
               <h3 className="font-display text-2xl text-primary mb-3">{s.t}</h3>
               <p className="text-muted-foreground leading-relaxed">{s.d}</p>
