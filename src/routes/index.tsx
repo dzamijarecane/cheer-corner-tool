@@ -34,15 +34,15 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-      {/* Hero: the minaret at dusk, with today's prayers as lit windows */}
+      {/* Hero: the prayer hall, with today's prayers as lit windows */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0">
           <img
-            src={duskImg}
-            alt="Minaret džamije Rečane u sumrak"
-            width={960}
-            height={960}
-            className="h-full w-full object-cover object-[70%_30%]"
+            src={interiorImg}
+            alt="Unutrašnjost džamije Rečane"
+            width={2000}
+            height={1500}
+            className="h-full w-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         </div>
@@ -144,15 +144,15 @@ function Home() {
         </div>
       </section>
 
-      {/* Interior band with hadith */}
+      {/* Dusk band with hadith */}
       <section className="relative overflow-hidden">
         <img
-          src={interiorImg}
-          alt="Unutrašnjost džamije Rečane"
-          width={2000}
-          height={1500}
+          src={duskImg}
+          alt="Minaret džamije Rečane u sumrak"
+          width={960}
+          height={960}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[70%_35%]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.22_0.04_155/0.92)_0%,oklch(0.22_0.04_155/0.75)_45%,oklch(0.22_0.04_155/0.2)_100%)]" />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 text-primary-foreground" data-reveal>
