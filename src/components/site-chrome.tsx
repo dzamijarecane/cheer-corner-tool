@@ -12,14 +12,14 @@ const NAV = [
 ] as const;
 
 function Mark({ className = "" }: { className?: string }) {
-  // Minaret + dome silhouette with a lit window
+  // The mosque's ن badge, matching the favicon
   return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden>
-      <path d="M29 4l1.6 6v24h-3.2V10z" fill="currentColor" />
-      <path d="M6 34V26a10 10 0 0 1 20 0v8z" fill="currentColor" />
-      <path d="M14 34v-5a2 2 0 0 1 4 0v5z" fill="var(--gold)" />
-      <rect x="4" y="34" width="30" height="2" rx="1" fill="currentColor" />
-    </svg>
+    <span
+      className={`grid shrink-0 place-items-center rounded-full bg-[var(--gold)] text-primary font-arabic ${className}`}
+      aria-hidden
+    >
+      ن
+    </span>
   );
 }
 
@@ -28,7 +28,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 bg-primary/95 text-primary-foreground backdrop-blur-md border-b border-white/10">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
         <Link to="/" className="flex items-center gap-3">
-          <Mark className="h-9 w-9 text-primary-foreground" />
+          <Mark className="h-9 w-9 text-lg" />
           <span className="leading-tight">
             <span className="block font-display text-xl">Džamija Rečane</span>
             <span className="block text-[11px] uppercase tracking-[0.22em] text-[color:var(--gold)]">Prizren · Kosovo</span>
@@ -75,7 +75,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <Mark className="h-10 w-10 text-primary-foreground" />
+            <Mark className="h-10 w-10 text-xl" />
             <span className="font-display text-2xl">Džamija Rečane</span>
           </div>
           <p className="mt-5 max-w-sm text-primary-foreground/75 leading-relaxed">
