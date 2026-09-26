@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site-chrome";
 import exteriorAsset from "@/assets/mosque-recane-hero.jpg.asset.json";
+import { withBase } from "@/lib/utils";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:url", content: "/about" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: withBase("/about") }],
   }),
   component: About,
 });

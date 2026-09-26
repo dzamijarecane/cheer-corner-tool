@@ -6,6 +6,7 @@ import exteriorImg from "@/assets/mosque-recane-exterior.jpg.asset.json";
 import duskAsset from "@/assets/mosque-recane-dusk.jpg.asset.json";
 import { fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
 import { toHijri, formatHijri } from "@/lib/hijri";
+import { withBase } from "@/lib/utils";
 
 const prayerTimesQuery = queryOptions({
   queryKey: ["prayer-times", "prizren", new Date().toDateString()],
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: withBase("/") }],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(prayerTimesQuery),
   component: Home,

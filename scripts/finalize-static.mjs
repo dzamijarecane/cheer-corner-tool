@@ -1,7 +1,7 @@
 // Flattens the build output so a plain static host can serve `dist/` directly.
 //
 // TanStack Start writes the browser bundle + prerendered HTML into `dist/client`.
-// Static hosts (nginx on Instapods, Netlify, GitHub Pages, ...) serve the root of
+// Static hosts (GitHub Pages, Netlify, nginx, ...) serve the root of
 // `dist`, so without this step there is no `dist/index.html` and nginx answers
 // 403 Forbidden. This script moves `dist/client/*` up into `dist/`, drops any
 // server-only leftovers, and adds a `404.html` fallback for client-side routes.
@@ -14,7 +14,7 @@ const dist = path.join(root, "dist");
 const client = path.join(dist, "client");
 
 if (!existsSync(client) || !existsSync(path.join(client, "index.html"))) {
-  // Server-rendered build (e.g. inside Lovable) — nothing to flatten.
+  // Not a prerendered build — nothing to flatten.
   console.log("[static] not a static build — skipping");
   process.exit(0);
 }
