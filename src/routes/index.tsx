@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { Suspense, useEffect, useState } from "react";
-import interiorAsset from "@/assets/mosque-recane-hero.jpg.asset.json";
-import exteriorImg from "@/assets/mosque-recane-exterior.jpg.asset.json";
-import duskAsset from "@/assets/mosque-recane-dusk.jpg.asset.json";
+import interiorImg from "@/assets/mosque-recane-interior.jpg";
+import exteriorImg from "@/assets/mosque-recane-exterior.jpg";
+import duskImg from "@/assets/mosque-recane-dusk.jpg";
 import { fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
 import { toHijri, formatHijri } from "@/lib/hijri";
 import { withBase } from "@/lib/utils";
@@ -38,7 +38,7 @@ function Home() {
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
         <div className="absolute inset-0">
           <img
-            src={duskAsset.url}
+            src={duskImg}
             alt="Minaret džamije Rečane u sumrak"
             width={960}
             height={960}
@@ -112,10 +112,10 @@ function Home() {
           <div className="relative mx-auto w-full max-w-sm">
             <div className="arch absolute -inset-3 border border-[var(--gold)]/60" aria-hidden />
             <img
-              src={exteriorImg.url}
+              src={exteriorImg}
               alt="Džamija Rečane noću, osvijetljeni prozori i minaret"
-              width={1152}
-              height={2048}
+              width={844}
+              height={1500}
               loading="lazy"
               className="arch relative aspect-[3/4] w-full object-cover shadow-[var(--shadow-soft)]"
             />
@@ -147,10 +147,10 @@ function Home() {
       {/* Interior band with hadith */}
       <section className="relative overflow-hidden">
         <img
-          src={interiorAsset.url}
+          src={interiorImg}
           alt="Unutrašnjost džamije Rečane"
-          width={2048}
-          height={1535}
+          width={2000}
+          height={1500}
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />
