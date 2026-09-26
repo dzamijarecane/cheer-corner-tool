@@ -63,8 +63,8 @@ function Events() {
             <article key={e.title} className="group rounded-xl border border-border/60 bg-card p-7 hover:shadow-[var(--shadow-soft)] transition">
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div>
-                  <div className="text-sm text-primary font-medium whitespace-pre-wrap">{e.date}</div>
-                  <div className="text-xs text-muted-foreground mt-1 whitespace-pre-wrap">{e.time}</div>
+                  {e.date.trim() && <div className="text-sm text-primary font-medium">{e.date}</div>}
+                  {e.time.trim() && <div className="text-xs text-muted-foreground mt-1">{e.time}</div>}
                 </div>
                 <span className="text-xs uppercase tracking-widest text-[color:var(--gold)] border border-[var(--gold)]/40 rounded-full px-3 py-1">
                   {e.tag}

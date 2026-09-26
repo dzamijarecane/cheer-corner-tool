@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site-chrome";
-import exteriorAsset from "@/assets/mosque-recane-dusk.jpg.asset.json";
+import exteriorAsset from "@/assets/mosque-recane-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -28,7 +28,7 @@ function About() {
       />
       <section className="py-20">
         <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-14 items-start">
-          <img src={exteriorAsset.url} alt="Džamija Rečane u sumrak" width={1400} height={900} loading="lazy" className="rounded-xl shadow-[var(--shadow-soft)]" />
+          <img src={exteriorAsset.url} alt="Unutrašnjost džamije Rečane" width={1400} height={900} loading="lazy" className="rounded-xl shadow-[var(--shadow-soft)]" />
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
             <p>
               Naša misija je da kroz ibadet, edukaciju i društveno korisne aktivnosti jačamo vjeru, njegujemo islamske vrijednosti i gradimo snažnu i povezanu zajednicu.
