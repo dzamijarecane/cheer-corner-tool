@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site-chrome";
+import { withBase } from "@/lib/utils";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/services")({
       { property: "og:url", content: "/services" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: withBase("/services") }],
   }),
   component: Services,
 });

@@ -4,12 +4,16 @@ The website of Džamija Rečane (Rečane, Prizren, Kosovo): daily prayer times, 
 
 Based on the mosque's Facebook page: https://www.facebook.com/share/1DBXqaMakv/?mibextid=wwXIfr
 
-## How this site is built
+Live site: https://hurtialek66-dot.github.io/cheer-corner-tool/
 
-Changes are made with [Claude Code](https://claude.ai/code) and pushed to `main` on GitHub.
-[Lovable](https://lovable.dev/projects/ac936922-1f57-41af-8879-8cdca885fe45) stays connected in the background: it syncs `main`, hosts the mosque photos and publishes the live site.
+## How this site is built and published
 
-Built with TanStack Start, React and Tailwind CSS.
+Changes are made with [Claude Code](https://claude.ai/code) and merged into `main` on GitHub.
+Every push to `main` builds the site and publishes it to GitHub Pages automatically
+(see `.github/workflows/deploy.yml`); it is live about a minute later.
+
+Built with TanStack Start, React and Tailwind CSS. `npm run build` prerenders every page to
+plain HTML in `dist/`, so the site can be served by any static host.
 
 ## Development
 
@@ -22,4 +26,5 @@ npm i
 npm run dev
 ```
 
-The mosque photos are served by Lovable, so they only appear in the Lovable preview and on the published site, not when running locally.
+To build for a sub-path (as GitHub Pages does), set `BASE_PATH`, for example
+`BASE_PATH=/cheer-corner-tool/ npm run build`.

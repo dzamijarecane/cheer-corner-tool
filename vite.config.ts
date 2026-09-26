@@ -1,28 +1,31 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - TanStack devtools (dev-only, first), tanstackStart, viteReact, tailwindcss, tsConfigPaths,
-//     nitro (build-only using cloudflare as a default target), VITE_* env injection, @ path alias,
-//     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import tsConfigPaths from "vite-tsconfig-paths";
 
-// Static build: prerenders every route to plain HTML so the output can be served
-// by any static web server (nginx / Instapods / Netlify / GitHub Pages).
-// It is used automatically outside the Lovable build environment, and can be
-// forced with STATIC_BUILD=1 or disabled with STATIC_BUILD=0.
-const staticFlag = process.env["STATIC_BUILD"];
-const insideLovable = Boolean(process.env["LOVABLE_ASSETS_ENDPOINT_URL"]);
-const isBuildCommand = process.argv.includes("build");
-const isStatic =
-  isBuildCommand &&
-  (staticFlag === "1" || (staticFlag !== "0" && !insideLovable));
+// `npm run build` prerenders every route to plain HTML, so `dist/` can be served
+// by any static host (GitHub Pages, Netlify, nginx, ...).
+// BASE_PATH sets the URL prefix the site lives under, e.g. "/cheer-corner-tool/"
+// for https://<user>.github.io/cheer-corner-tool/. It defaults to "/".
+const base = process.env["BASE_PATH"] || "/";
 
 export default defineConfig({
-  // Static mode must only affect production builds. Enabling it during `vite
-  // dev` disables parts of the live preview pipeline and drops its connection.
-  ...(isStatic
-    ? {
-        nitro: false,
-        tanstackStart: { prerender: { enabled: true, crawlLinks: true } },
-      }
-    : {}),
+  base,
+  plugins: [
+    tsConfigPaths({ projects: ["./tsconfig.json"] }),
+    tailwindcss(),
+    tanstackStart({
+      prerender: { enabled: true, crawlLinks: true },
+    }),
+    viteReact(),
+  ],
+  resolve: {
+    alias: { "@": `${process.cwd()}/src` },
+    dedupe: ["react", "react-dom", "@tanstack/react-query", "@tanstack/query-core"],
+  },
+  server: { port: 8080 },
+  // Prerendering runs the site in a local preview server; listen on IPv4
+  // so it also works on machines without IPv6.
+  preview: { host: "127.0.0.1" },
 });

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHeader } from "@/components/site-chrome";
+import { withBase } from "@/lib/utils";
 
 export const Route = createFileRoute("/quran")({
   head: () => ({
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/quran")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/quran" }],
+    links: [{ rel: "canonical", href: withBase("/quran") }],
   }),
   component: QuranPage,
 });
