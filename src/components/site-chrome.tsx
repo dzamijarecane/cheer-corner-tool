@@ -8,7 +8,6 @@ const NAV = [
   { to: "/quran", label: "Kur'an i dove" },
   { to: "/calendar", label: "Kalendar" },
   { to: "/events", label: "Događaji" },
-  { to: "/services", label: "Usluge" },
 ] as const;
 
 function Mark({ className = "" }: { className?: string }) {
@@ -98,7 +97,7 @@ export function SiteFooter() {
         <div>
           <h4 className="text-xs uppercase tracking-[0.22em] text-[color:var(--gold)] mb-4">Brzi linkovi</h4>
           <ul className="space-y-2 text-primary-foreground/85">
-            {NAV.filter((n) => ["/prayer-times", "/calendar", "/events", "/services"].includes(n.to)).map((n) => (
+            {NAV.filter((n) => ["/prayer-times", "/calendar", "/events", "/quran"].includes(n.to)).map((n) => (
               <li key={n.to}>
                 <Link to={n.to} className="hover:text-[color:var(--gold)] transition">
                   {n.label}
