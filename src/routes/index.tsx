@@ -198,8 +198,10 @@ function toMin(t: string) {
 
 function PrayerWindows() {
   const { data } = useSuspenseQuery(prayerTimesQuery);
-  const [now, setNow] = useState(() => new Date());
+  // Start the clock only in the browser so SSR and hydration render the same markup
+  const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
+    setNow(new Date());
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
   }, []);
@@ -211,12 +213,16 @@ function PrayerWindows() {
     { name: "Akšam", adhan: data.timings.Maghrib },
     { name: "Jacija", adhan: data.timings.Isha },
   ];
-  const nowMin = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
-  let nextIdx = items.findIndex((p) => toMin(p.adhan) > nowMin);
-  const diff = nextIdx === -1 ? 1440 - nowMin + toMin(items[0].adhan) : toMin(items[nextIdx].adhan) - nowMin;
-  if (nextIdx === -1) nextIdx = 0;
-  const pad = (n: number) => String(Math.floor(n)).padStart(2, "0");
-  const countdown = `${pad(diff / 60)}:${pad(diff % 60)}:${pad((diff * 60) % 60)}`;
+  let nextIdx = -1;
+  let countdown = "--:--:--";
+  if (now) {
+    const nowMin = now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+    nextIdx = items.findIndex((p) => toMin(p.adhan) > nowMin);
+    const diff = nextIdx === -1 ? 1440 - nowMin + toMin(items[0].adhan) : toMin(items[nextIdx].adhan) - nowMin;
+    if (nextIdx === -1) nextIdx = 0;
+    const pad = (n: number) => String(Math.floor(n)).padStart(2, "0");
+    countdown = `${pad(diff / 60)}:${pad(diff % 60)}:${pad((diff * 60) % 60)}`;
+  }
 
   return (
     <div>
@@ -224,11 +230,12 @@ function PrayerWindows() {
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--gold)]">Danas · Prizren</p>
           <p className="mt-1 text-primary-foreground/80">
-            {data.date.readable} · {formatHijri(toHijri(now))}
+            {data.date.readable}
+            {now && ` · ${formatHijri(toHijri(now))}`}
           </p>
         </div>
         <p className="text-primary-foreground/80">
-          {items[nextIdx].name} za{" "}
+          {nextIdx === -1 ? "Sljedeći namaz" : items[nextIdx].name} za{" "}
           <span className="font-semibold tabular-nums text-primary-foreground text-lg">{countdown}</span>
           <Link to="/prayer-times" className="ml-4 text-[color:var(--gold)] underline underline-offset-4">
             Cijeli raspored →
