@@ -153,7 +153,7 @@ function Home() {
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(15_26_43/0.92)_0%,rgb(15_26_43/0.75)_45%,rgb(15_26_43/0.2)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.22_0.04_155/0.92)_0%,oklch(0.22_0.04_155/0.75)_45%,oklch(0.22_0.04_155/0.2)_100%)]" />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 text-primary-foreground" data-reveal>
           <p className="font-display text-3xl md:text-5xl leading-snug max-w-xl">
             „Allahu su najdraža mjesta na Zemlji džamije.“
