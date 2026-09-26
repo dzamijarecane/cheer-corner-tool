@@ -1,6 +1,9 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+/* Amiri is bundled (not loaded from Google Fonts) so Qur'anic marks always render correctly */
+@import "@fontsource/amiri/arabic-400.css";
+@import "@fontsource/amiri/arabic-700.css";
 
 @custom-variant dark (&:is(.dark *));
 
