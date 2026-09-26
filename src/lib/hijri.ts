@@ -82,24 +82,149 @@ export function formatGregorian(d: Date): string {
   return `${d.getDate()}. ${MONTHS_SR[d.getMonth()]} ${d.getFullYear()}.`;
 }
 
-type HolidayDef = { month: number; day: number; name: string; note: string };
+/**
+ * Dokaz iz sunneta za svaki dan: `sunnah: true` kada je od Poslanika ﷺ vjerodostojno
+ * preneseno da se taj dan obilježava ibadetom, `false` kada takvog dokaza nema.
+ * Izvori: Sahih el-Buhari i Sahih Muslim (numeracija po Fuadu Abdulbakiju); Ibn Madže je
+ * naveden samo tamo gdje se o hadisu raspravlja.
+ */
+export type HolidayProof = { sunnah: boolean; text: string };
+
+type HolidayDef = { month: number; day: number; name: string; note: string; proof: HolidayProof };
 
 const HOLIDAYS: HolidayDef[] = [
-  { month: 1, day: 1, name: "Nova hidžretska godina", note: "Početak islamske godine" },
-  { month: 1, day: 10, name: "Dan Ašure", note: "Preporučen post" },
-  { month: 3, day: 12, name: "Mevlud", note: "Rođenje Poslanika a.s." },
-  { month: 7, day: 27, name: "Lejletul-Mi'radž", note: "Noć uzdignuća" },
-  { month: 8, day: 15, name: "Lejletul-berat", note: "Noć oprosta" },
-  { month: 9, day: 1, name: "Početak Ramazana", note: "Prvi dan posta" },
-  { month: 9, day: 27, name: "Lejletul-kadr", note: "Noć sudbine" },
-  { month: 10, day: 1, name: "Ramazanski bajram", note: "Tri dana bajrama" },
-  { month: 12, day: 9, name: "Dan Arefata", note: "Post za one koji nisu na hadždžu" },
-  { month: 12, day: 10, name: "Kurban-bajram", note: "Četiri dana bajrama" },
+  {
+    month: 1,
+    day: 1,
+    name: "Nova hidžretska godina",
+    note: "Početak islamske godine",
+    proof: {
+      sunnah: false,
+      text:
+        "Nema dokaza da je Poslanik, s.a.v.s., propisao obilježavanje Nove hidžretske godine ili poseban ibadet na ovaj dan. " +
+        "Ashabi su godine počeli brojati od njegovog dolaska u Medinu, a ne od poslanstva ni od njegove smrti (Buhari, 3934). " +
+        "Za mjesec muharrem općenito Poslanik, s.a.v.s., je rekao: „Najbolji post nakon ramazana je post u Allahovom mjesecu muharremu“ (Muslim, 1163).",
+    },
+  },
+  {
+    month: 1,
+    day: 10,
+    name: "Dan Ašure",
+    note: "Preporučen post",
+    proof: {
+      sunnah: true,
+      text:
+        "Poslanik, s.a.v.s., je postio na Dan Ašure i naredio da se posti (Buhari, 2004). " +
+        "Rekao je: „Nadam se od Allaha da post na Dan Ašure briše grijehe prethodne godine“ (Muslim, 1162), " +
+        "i: „Ako doživim iduću godinu, postit ću i deveti dan“ (Muslim, 1134).",
+    },
+  },
+  {
+    month: 3,
+    day: 12,
+    name: "Mevlud",
+    note: "Rođenje Poslanika a.s.",
+    proof: {
+      sunnah: false,
+      text:
+        "Nema dokaza da je Poslanik, s.a.v.s., propisao obilježavanje svog rođenja ili poseban ibadet na 12. rebiul-evvel. " +
+        "Vjerodostojno je da je postio ponedjeljkom i, kada su ga upitali o tom postu, rekao: „To je dan u kojem sam rođen“ (Muslim, 1162).",
+    },
+  },
+  {
+    month: 7,
+    day: 27,
+    name: "Lejletul-Mi'radž",
+    note: "Noć uzdignuća",
+    proof: {
+      sunnah: false,
+      text:
+        "Isra i Mi'radž potvrđeni su Kur'anom (El-Isra, 1) i vjerodostojnim hadisima (Buhari, 3887), " +
+        "ali nema dokaza da je Poslanik, s.a.v.s., odredio datum te noći niti propisao poseban namaz, post ili obilježavanje u njoj.",
+    },
+  },
+  {
+    month: 8,
+    day: 15,
+    name: "Lejletul-berat",
+    note: "Noć oprosta",
+    proof: {
+      sunnah: false,
+      text:
+        "U Buharijinoj i Muslimovoj zbirci nema hadisa o posebnoj vrijednosti noći 15. ša'bana. " +
+        "Hadis da Allah te noći oprašta svima osim mušriku i onome ko je u svađi bilježi Ibn Madže (1390), a učenjaci se razilaze o njegovoj vjerodostojnosti; " +
+        "hadis koji naređuje klanjanje te noći i post narednog dana vrlo je slab (Ibn Madže, 1388). " +
+        "Vjerodostojno je da Poslanik, s.a.v.s., ni u jednom mjesecu osim ramazana nije postio više nego u ša'banu (Buhari, 1969; Muslim, 1156).",
+    },
+  },
+  {
+    month: 9,
+    day: 1,
+    name: "Početak Ramazana",
+    note: "Prvi dan posta",
+    proof: {
+      sunnah: true,
+      text:
+        "Post ramazana je farz (El-Bekare, 183–185). Poslanik, s.a.v.s., je rekao: „Kada ga (mlađak) vidite, postite, a kada ga vidite, prestanite postiti“ (Buhari, 1900; Muslim, 1080), " +
+        "i: „Ko posti ramazan vjerujući i nadajući se nagradi, bit će mu oprošteni prethodni grijesi“ (Buhari, 38; Muslim, 760).",
+    },
+  },
+  {
+    month: 9,
+    day: 27,
+    name: "Lejletul-kadr",
+    note: "Noć sudbine",
+    proof: {
+      sunnah: true,
+      text:
+        "Poslanik, s.a.v.s., je rekao: „Tražite Lejletul-kadr u neparnim noćima zadnjih deset noći ramazana“ (Buhari, 2017), " +
+        "i: „Ko provede Lejletul-kadr u namazu vjerujući i nadajući se nagradi, bit će mu oprošteni prethodni grijesi“ (Buhari, 1901; Muslim, 760). " +
+        "Poslanik, s.a.v.s., nije odredio da je to baš 27. noć; ashab Ubejj b. Ka'b se zaklinjao da je to 27. noć (Muslim, 762).",
+    },
+  },
+  {
+    month: 10,
+    day: 1,
+    name: "Ramazanski bajram",
+    note: "Tri dana bajrama",
+    proof: {
+      sunnah: true,
+      text:
+        "Poslanik, s.a.v.s., je na Ramazanski i Kurban-bajram izlazio na musallu i prvo klanjao bajram-namaz (Buhari, 956). " +
+        "Propisao je zekatul-fitr i naredio da se da prije izlaska na bajram-namaz (Buhari, 1503), " +
+        "a zabranio je post na dan Ramazanskog i Kurban-bajrama (Buhari, 1991; Muslim, 827).",
+    },
+  },
+  {
+    month: 12,
+    day: 9,
+    name: "Dan Arefata",
+    note: "Post za one koji nisu na hadždžu",
+    proof: {
+      sunnah: true,
+      text:
+        "Poslanik, s.a.v.s., je za post na Dan Arefata rekao: „Nadam se od Allaha da briše grijehe prethodne i naredne godine“ (Muslim, 1162).",
+    },
+  },
+  {
+    month: 12,
+    day: 10,
+    name: "Kurban-bajram",
+    note: "Četiri dana bajrama",
+    proof: {
+      sunnah: true,
+      text:
+        "Poslanik, s.a.v.s., je klanjao bajram-namaz (Buhari, 956) i klao kurban – dva ovna, svojom rukom (Buhari, 5565; Muslim, 1966). " +
+        "Zabranio je post na dan bajrama (Buhari, 1991; Muslim, 827) i rekao: „Dani tešrika su dani jela, pića i spominjanja Allaha“ (Muslim, 1141) – " +
+        "to su tri dana nakon Kurban-bajrama.",
+    },
+  },
 ];
 
 export type Holiday = {
   name: string;
   note: string;
+  proof: HolidayProof;
   hijri: string;
   gregorian: Date;
   gregorianLabel: string;
@@ -115,6 +240,7 @@ export function upcomingHolidays(from = new Date()): Holiday[] {
       list.push({
         name: def.name,
         note: def.note,
+        proof: def.proof,
         hijri: `${def.day}. ${HIJRI_MONTHS[def.month - 1]} ${y}.`,
         gregorian: g,
         gregorianLabel: formatGregorian(g),

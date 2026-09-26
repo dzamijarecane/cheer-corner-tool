@@ -56,6 +56,16 @@ function CalendarPage() {
                   <p className="mt-2 text-sm text-muted-foreground">{h.note}</p>
                   <p className="mt-4 text-sm font-medium">{h.gregorianLabel}</p>
                   <p className="text-xs text-muted-foreground">{h.hijri}</p>
+                  <div className="mt-5 border-t border-border/60 pt-4">
+                    <p
+                      className={`text-xs font-semibold uppercase tracking-widest ${
+                        h.proof.sunnah ? "text-primary" : "text-[color:var(--wood)]"
+                      }`}
+                    >
+                      {h.proof.sunnah ? "Dokaz iz sunneta" : "Nema dokaza iz sunneta"}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{h.proof.text}</p>
+                  </div>
                 </article>
               );
             })}
@@ -64,6 +74,10 @@ function CalendarPage() {
           <p className="mt-8 text-sm text-muted-foreground">
             Datumi su izračunati po hidžretskom kalendaru i mogu se razlikovati za jedan dan
             u odnosu na zvaničnu objavu Islamske zajednice.
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Uz svaki dan naveden je dokaz: šta je Poslanik, s.a.v.s., rekao ili radio, s brojem hadisa u zbirkama Sahih
+            el-Buhari i Sahih Muslim. Gdje takvog dokaza nema, to je jasno naznačeno.
           </p>
         </div>
       </section>
