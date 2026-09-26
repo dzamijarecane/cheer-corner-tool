@@ -118,11 +118,9 @@ export function SiteFooter() {
 export function PageHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      <div
-        className="absolute inset-0 opacity-[0.09]"
-        style={{ backgroundImage: "url('/pattern-bg.svg')", backgroundSize: "96px 96px" }}
-        aria-hidden
-      />
+      <div className="absolute inset-0 overflow-hidden opacity-[0.14]" aria-hidden>
+        <div className="pattern-floor" />
+      </div>
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black/20" aria-hidden />
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24 relative">
         <p className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[color:var(--gold)] mb-5">

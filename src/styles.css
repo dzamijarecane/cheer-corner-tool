@@ -85,3 +85,69 @@
   .arch-sm { border-top-left-radius: 999px 45%; border-top-right-radius: 999px 45%; }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 }
+
+/* ---------- 3D motion (see components/motion-3d.tsx) ----------
+   Kept outside @layer so these win over Tailwind's transition utilities.
+   Animations use fill-mode "backwards" so, once finished, they release the
+   transform and the mouse tilt can take over. */
+
+@keyframes rise-3d {
+  from { opacity: 0; transform: perspective(1000px) rotateX(18deg) translateY(48px) scale(0.97); }
+}
+@keyframes window-open {
+  from { opacity: 0; transform: perspective(700px) rotateX(-75deg); }
+  60% { opacity: 1; }
+}
+@keyframes floor-scroll {
+  to { background-position: 0 96px; }
+}
+
+/* Scroll reveal: hidden only once JS has confirmed motion is allowed */
+.motion-ready [data-reveal]:not(.is-visible),
+.motion-ready [data-reveal-stagger]:not(.is-visible) > * { opacity: 0; }
+
+.motion-ready [data-reveal].is-visible,
+.motion-ready [data-reveal-stagger].is-visible > * {
+  transform-origin: 50% 100%;
+  animation: rise-3d 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+[data-reveal-stagger].is-visible > :nth-child(2) { animation-delay: 0.1s; }
+[data-reveal-stagger].is-visible > :nth-child(3) { animation-delay: 0.2s; }
+[data-reveal-stagger].is-visible > :nth-child(4) { animation-delay: 0.3s; }
+[data-reveal-stagger].is-visible > :nth-child(5) { animation-delay: 0.4s; }
+[data-reveal-stagger].is-visible > :nth-child(n + 6) { animation-delay: 0.5s; }
+
+/* Prayer-time windows swing open from their base on page load */
+.window-open {
+  transform-origin: 50% 100%;
+  animation: window-open 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+/* Mouse tilt with a soft light that follows the cursor */
+[data-tilt] { position: relative; will-change: transform; }
+[data-tilt]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgb(255 255 255 / 0.22), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+[data-tilt].is-tilting::after { opacity: 1; }
+
+/* Page headers: the star pattern as a slowly moving 3D floor */
+.pattern-floor {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 160%;
+  background-image: url("/pattern-bg.svg");
+  background-size: 96px 96px;
+  transform: perspective(520px) rotateX(64deg);
+  transform-origin: 50% 100%;
+  mask-image: linear-gradient(to bottom, transparent 20%, black 75%);
+  animation: floor-scroll 7s linear infinite;
+}

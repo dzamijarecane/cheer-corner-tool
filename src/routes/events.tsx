@@ -58,9 +58,9 @@ function Events() {
         description="Od sedmičnih halki do bajram-namaza, uvijek se nešto dešava. Svi su dobrodošli."
       />
       <section className="py-16">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-6">
+        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-6" data-reveal-stagger>
           {EVENTS.map((e) => (
-            <article key={e.title} className="group rounded-xl border border-border/60 bg-card p-7 hover:shadow-[var(--shadow-soft)] transition">
+            <article key={e.title} data-tilt="6" className="group rounded-xl border border-border/60 bg-card p-7 hover:shadow-[var(--shadow-soft)] transition">
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div>
                   {e.date.trim() && <div className="text-sm text-primary font-medium">{e.date}</div>}
