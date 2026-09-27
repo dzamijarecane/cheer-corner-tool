@@ -7,9 +7,9 @@ export const Route = createFileRoute("/calendar")({
   head: () => ({
     meta: [
       { title: "Hidžretski kalendar i praznici | Džamija Rečane" },
-      { name: "description", content: "Današnji hidžretski datum te datumi Ramazana, Bajrama, Mevluda i drugih islamskih praznika." },
+      { name: "description", content: "Današnji hidžretski datum te datumi Ramazana, Bajrama i drugih dana za koje postoji dokaz iz sunneta." },
       { property: "og:title", content: "Hidžretski kalendar i praznici — Džamija Rečane" },
-      { property: "og:description", content: "Islamski datumi, Ramazan, Bajrami i mubarek noći." },
+      { property: "og:description", content: "Islamski datumi: Ramazan, Bajrami, Arefat i Ašura." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -56,6 +56,13 @@ function CalendarPage() {
                   <p className="mt-2 text-sm text-muted-foreground">{h.note}</p>
                   <p className="mt-4 text-sm font-medium">{h.gregorianLabel}</p>
                   <p className="text-xs text-muted-foreground">{h.hijri}</p>
+                  {h.dateSource && (
+                    <p className="mt-2 text-xs font-medium text-[color:var(--wood)]">
+                      {h.dateSource === "takvim"
+                        ? "Datum prema takvimu Islamske zajednice."
+                        : "Približan datum – početak ramazana određuje se prema takvimu Islamske zajednice."}
+                    </p>
+                  )}
                   <div className="mt-5 border-t border-border/60 pt-4">
                     <p
                       className={`text-xs font-semibold uppercase tracking-widest ${
@@ -76,8 +83,9 @@ function CalendarPage() {
             u odnosu na zvaničnu objavu Islamske zajednice.
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
-            Uz svaki dan naveden je dokaz: šta je Poslanik, s.a.v.s., rekao ili radio, s brojem hadisa u zbirkama Sahih
-            el-Buhari i Sahih Muslim. Gdje takvog dokaza nema, to je jasno naznačeno.
+            Prikazani su samo dani za koje postoji dokaz iz sunneta, uz ono što je Poslanik, s.a.v.s., rekao ili
+            radio i broj hadisa u zbirkama Sahih el-Buhari i Sahih Muslim. Početak ramazana preuzima se iz takvima
+            Islamske zajednice.
           </p>
         </div>
       </section>
