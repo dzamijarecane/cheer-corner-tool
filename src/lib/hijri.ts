@@ -1,4 +1,5 @@
 // Tabularni (Kuvajtski) algoritam za pretvaranje gregorijanskog u hidžretski datum.
+import takvim from "@/data/kosovo-prayer-times.json";
 
 export const HIJRI_MONTHS = [
   "Muharrem",
@@ -85,27 +86,21 @@ export function formatGregorian(d: Date): string {
 /**
  * Dokaz iz sunneta za svaki dan: `sunnah: true` kada je od Poslanika ﷺ vjerodostojno
  * preneseno da se taj dan obilježava ibadetom, `false` kada takvog dokaza nema.
- * Izvori: Sahih el-Buhari i Sahih Muslim (numeracija po Fuadu Abdulbakiju); Ibn Madže je
- * naveden samo tamo gdje se o hadisu raspravlja.
+ * Izvori: Sahih el-Buhari i Sahih Muslim (numeracija po Fuadu Abdulbakiju).
  */
 export type HolidayProof = { sunnah: boolean; text: string };
 
-type HolidayDef = { month: number; day: number; name: string; note: string; proof: HolidayProof };
+type HolidayDef = {
+  month: number;
+  day: number;
+  name: string;
+  note: string;
+  proof: HolidayProof;
+  /** Ključ u takvimu BIK (metadata.islamic_events_<godina>) čiji datum ima prednost nad izračunom. */
+  takvimKey?: string;
+};
 
 const HOLIDAYS: HolidayDef[] = [
-  {
-    month: 1,
-    day: 1,
-    name: "Nova hidžretska godina",
-    note: "Početak islamske godine",
-    proof: {
-      sunnah: false,
-      text:
-        "Nema dokaza da je Poslanik, s.a.v.s., propisao obilježavanje Nove hidžretske godine ili poseban ibadet na ovaj dan. " +
-        "Ashabi su godine počeli brojati od njegovog dolaska u Medinu, a ne od poslanstva ni od njegove smrti (Buhari, 3934). " +
-        "Za mjesec muharrem općenito Poslanik, s.a.v.s., je rekao: „Najbolji post nakon ramazana je post u Allahovom mjesecu muharremu“ (Muslim, 1163).",
-    },
-  },
   {
     month: 1,
     day: 10,
@@ -120,48 +115,11 @@ const HOLIDAYS: HolidayDef[] = [
     },
   },
   {
-    month: 3,
-    day: 12,
-    name: "Mevlud",
-    note: "Rođenje Poslanika a.s.",
-    proof: {
-      sunnah: false,
-      text:
-        "Nema dokaza da je Poslanik, s.a.v.s., propisao obilježavanje svog rođenja ili poseban ibadet na 12. rebiul-evvel. " +
-        "Vjerodostojno je da je postio ponedjeljkom i, kada su ga upitali o tom postu, rekao: „To je dan u kojem sam rođen“ (Muslim, 1162).",
-    },
-  },
-  {
-    month: 7,
-    day: 27,
-    name: "Lejletul-Mi'radž",
-    note: "Noć uzdignuća",
-    proof: {
-      sunnah: false,
-      text:
-        "Isra i Mi'radž potvrđeni su Kur'anom (El-Isra, 1) i vjerodostojnim hadisima (Buhari, 3887), " +
-        "ali nema dokaza da je Poslanik, s.a.v.s., odredio datum te noći niti propisao poseban namaz, post ili obilježavanje u njoj.",
-    },
-  },
-  {
-    month: 8,
-    day: 15,
-    name: "Lejletul-berat",
-    note: "Noć oprosta",
-    proof: {
-      sunnah: false,
-      text:
-        "U Buharijinoj i Muslimovoj zbirci nema hadisa o posebnoj vrijednosti noći 15. ša'bana. " +
-        "Hadis da Allah te noći oprašta svima osim mušriku i onome ko je u svađi bilježi Ibn Madže (1390), a učenjaci se razilaze o njegovoj vjerodostojnosti; " +
-        "hadis koji naređuje klanjanje te noći i post narednog dana vrlo je slab (Ibn Madže, 1388). " +
-        "Vjerodostojno je da Poslanik, s.a.v.s., ni u jednom mjesecu osim ramazana nije postio više nego u ša'banu (Buhari, 1969; Muslim, 1156).",
-    },
-  },
-  {
     month: 9,
     day: 1,
     name: "Početak Ramazana",
     note: "Prvi dan posta",
+    takvimKey: "ramadan_start",
     proof: {
       sunnah: true,
       text:
@@ -225,22 +183,44 @@ export type Holiday = {
   name: string;
   note: string;
   proof: HolidayProof;
+  /** "takvim": datum iz takvima Islamske zajednice; "izracun": približan, izračunat datum. */
+  dateSource?: "takvim" | "izracun";
   hijri: string;
   gregorian: Date;
   gregorianLabel: string;
 };
 
-/** Praznici za narednih 12 mjeseci, sortirani po datumu. */
+type TakvimMeta = Record<string, unknown>;
+
+/**
+ * Datum događaja iz takvima BIK (npr. početak ramazana), ako takvim pokriva tu godinu.
+ * Uzima se samo ako je blizu izračunatog datuma, da se ne pomiješaju različite godine.
+ */
+function takvimDate(key: string, near: Date): Date | undefined {
+  const events = (takvim.metadata as TakvimMeta)[`islamic_events_${near.getFullYear()}`] as
+    | Record<string, string>
+    | undefined;
+  const iso = events?.[key];
+  if (!iso) return undefined;
+  const [y, m, d] = iso.split("-").map(Number);
+  const date = new Date(y, m - 1, d);
+  return Math.abs(date.getTime() - near.getTime()) <= 5 * 86400000 ? date : undefined;
+}
+
+/** Naredni datum svakog dana iz liste, sortirano po datumu. */
 export function upcomingHolidays(from = new Date()): Holiday[] {
   const h = toHijri(from);
   const list: Holiday[] = [];
   for (const y of [h.year, h.year + 1]) {
     for (const def of HOLIDAYS) {
-      const g = hijriToGregorian(y, def.month, def.day);
+      const computed = hijriToGregorian(y, def.month, def.day);
+      const official = def.takvimKey ? takvimDate(def.takvimKey, computed) : undefined;
+      const g = official ?? computed;
       list.push({
         name: def.name,
         note: def.note,
         proof: def.proof,
+        dateSource: def.takvimKey ? (official ? "takvim" : "izracun") : undefined,
         hijri: `${def.day}. ${HIJRI_MONTHS[def.month - 1]} ${y}.`,
         gregorian: g,
         gregorianLabel: formatGregorian(g),
@@ -251,7 +231,7 @@ export function upcomingHolidays(from = new Date()): Holiday[] {
   return list
     .filter((x) => x.gregorian.getTime() >= start)
     .sort((a, b) => a.gregorian.getTime() - b.gregorian.getTime())
-    .slice(0, 12);
+    .slice(0, HOLIDAYS.length);
 }
 
 export function daysUntil(date: Date, from = new Date()): number {

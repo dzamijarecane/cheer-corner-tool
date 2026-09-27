@@ -85,7 +85,7 @@ function Home() {
           {[
             { to: "/qibla" as const, icon: "qibla", t: "Kibla i tesbih", d: "Smjer Kible i brojač zikra." },
             { to: "/quran" as const, icon: "book", t: "Kur'an i dove", d: "Kratke sure i svakodnevne dove." },
-            { to: "/calendar" as const, icon: "moon", t: "Hidžretski kalendar", d: "Ramazan, Bajrami i mubarek noći." },
+            { to: "/calendar" as const, icon: "moon", t: "Hidžretski kalendar", d: "Ramazan, Bajrami, Arefat i Ašura." },
           ].map((c) => (
             <Link
               key={c.to}
