@@ -36,6 +36,8 @@ function qiblaBearing(): number {
 }
 
 const BEARING = qiblaBearing();
+/** Degrees either side of the Qibla within which the phone counts as facing it. */
+const ALIGN_TOLERANCE = 10;
 
 function QiblaPage() {
   return (
@@ -85,6 +87,11 @@ function QiblaCompass() {
   }
 
   const rotation = heading == null ? BEARING : BEARING - heading;
+  // With a live compass, how far the phone is from the Qibla (-180..180, positive = turn right)
+  const offset = heading == null ? null : ((BEARING - heading + 540) % 360) - 180;
+  const aligned = offset != null && Math.abs(offset) <= ALIGN_TOLERANCE;
+  // Without a compass (e.g. on a computer) the direction is always shown
+  const showKaaba = heading == null || aligned;
 
   return (
     <div className="rounded-2xl border border-border/60 bg-card p-8 shadow-[var(--shadow-soft)]">
@@ -94,7 +101,11 @@ function QiblaCompass() {
         (jugoistok).
       </p>
 
-      <div className="mt-8 mx-auto relative h-60 w-60 rounded-full border-2 border-border/70 bg-background grid place-items-center">
+      <div
+        className={`mt-8 mx-auto relative h-60 w-60 rounded-full border-2 bg-background grid place-items-center transition-colors ${
+          aligned ? "border-[var(--gold)] shadow-[var(--shadow-glow)]" : "border-border/70"
+        }`}
+      >
         {["S", "I", "J", "Z"].map((l, i) => (
           <span
             key={l}
@@ -107,8 +118,9 @@ function QiblaCompass() {
           </span>
         ))}
         <div
-          className="absolute h-full w-full transition-transform duration-300"
+          className={`absolute h-full w-full transition-[transform,opacity] duration-300 ${showKaaba ? "opacity-100" : "opacity-0"}`}
           style={{ transform: `rotate(${rotation}deg)` }}
+          aria-hidden={!showKaaba}
         >
           <div className="absolute left-1/2 top-5 -translate-x-1/2 flex flex-col items-center">
             <span className="text-2xl">🕋</span>
@@ -125,6 +137,16 @@ function QiblaCompass() {
         >
           Uključi kompas na telefonu
         </button>
+      )}
+      {offset != null && (
+        <p
+          className={`mt-6 text-center font-medium ${aligned ? "text-primary" : "text-muted-foreground"}`}
+          aria-live="polite"
+        >
+          {aligned
+            ? "Okrenuti ste prema Kibli."
+            : `Polako se okrenite ${offset > 0 ? "udesno" : "ulijevo"} dok se ne pojavi Kaba.`}
+        </p>
       )}
       {status === "on" && heading == null && (
         <p className="mt-6 text-sm text-muted-foreground">Pomjerite telefon u obliku osmice da se kompas kalibriše.</p>
