@@ -121,8 +121,7 @@ function Home() {
             />
           </div>
           <div>
-            <p className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[color:var(--wood)] mb-5">
-              <span className="h-px w-10 bg-[var(--wood)]" aria-hidden />
+            <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--wood)] mb-5">
               Es-selamu alejkum
             </p>
             <h2 className="font-display text-4xl md:text-5xl leading-tight text-primary">
@@ -169,8 +168,7 @@ function Home() {
       <section className="py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-2xl mb-12" data-reveal>
-            <p className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[color:var(--wood)] mb-5">
-              <span className="h-px w-10 bg-[var(--wood)]" aria-hidden />
+            <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--wood)] mb-5">
               Šta nudimo
             </p>
             <h2 className="font-display text-4xl md:text-5xl text-primary">Mjesto za svaki dio sedmice.</h2>

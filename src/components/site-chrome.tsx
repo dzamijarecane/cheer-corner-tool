@@ -122,8 +122,7 @@ export function PageHeader({ eyebrow, title, description }: { eyebrow: string; t
       </div>
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black/20" aria-hidden />
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24 relative">
-        <p className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[color:var(--gold)] mb-5">
-          <span className="h-px w-10 bg-[var(--gold)]" aria-hidden />
+        <p className="text-xs uppercase tracking-[0.25em] text-[color:var(--gold)] mb-5">
           {eyebrow}
         </p>
         <h1 className="font-display text-4xl md:text-6xl leading-[1.08] max-w-3xl">{title}</h1>
