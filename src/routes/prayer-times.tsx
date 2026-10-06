@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { PageHeader } from "@/components/site-chrome";
-import { SABAH_MINUTES_BEFORE_SUNRISE, fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
+import { fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
 import { NextPrayerCountdown } from "@/components/next-prayer-countdown";
 import { toHijri, formatHijri } from "@/lib/hijri";
 import { canonical } from "@/lib/utils";
@@ -100,8 +100,7 @@ function PrayerTimesContent() {
             </table>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            Vrijeme sabaha je vrijeme kada se sabah-namaz klanja u džamiji Rečane: {SABAH_MINUTES_BEFORE_SUNRISE}{" "}
-            minuta prije izlaska sunca, pa se pomjera svaki dan zajedno s izlaskom sunca.
+            Sabah-namaz se u ovo vrijeme klanja u džamiji Rečane.
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
             Ostala vremena namaza za Prizren, Kosovo prema Takvimi izvoru Islamske zajednice Kosova.
