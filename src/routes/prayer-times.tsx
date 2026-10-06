@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/site-chrome";
 import { fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
 import { NextPrayerCountdown } from "@/components/next-prayer-countdown";
 import { toHijri, formatHijri } from "@/lib/hijri";
-import { withBase } from "@/lib/utils";
+import { canonical } from "@/lib/utils";
 
 const prayerTimesQuery = queryOptions({
   queryKey: ["prayer-times", "prizren", new Date().toDateString()],
@@ -21,10 +21,10 @@ export const Route = createFileRoute("/prayer-times")({
       { property: "og:title", content: "Vreme namaza, Prizren, Kosovo" },
       { property: "og:description", content: "Dnevni ezan za Prizren, Kosovo." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/prayer-times" },
+      { property: "og:url", content: canonical("/prayer-times") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: withBase("/prayer-times") }],
+    links: [{ rel: "canonical", href: canonical("/prayer-times") }],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(prayerTimesQuery),
   component: PrayerTimesPage,

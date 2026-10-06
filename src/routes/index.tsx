@@ -6,7 +6,7 @@ import exteriorImg from "@/assets/mosque-recane-exterior.jpg";
 import duskImg from "@/assets/mosque-recane-dusk.jpg";
 import { fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
 import { toHijri, formatHijri } from "@/lib/hijri";
-import { withBase } from "@/lib/utils";
+import { canonical } from "@/lib/utils";
 
 const prayerTimesQuery = queryOptions({
   queryKey: ["prayer-times", "prizren", new Date().toDateString()],
@@ -22,10 +22,10 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Džamija Rečane, Prizren, Kosovo" },
       { property: "og:description", content: "Dnevni namazi, časovi i događaji zajednice u Prizrenu, Kosovo." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: canonical("/") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: withBase("/") }],
+    links: [{ rel: "canonical", href: canonical("/") }],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(prayerTimesQuery),
   component: Home,

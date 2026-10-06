@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { PageHeader } from "@/components/site-chrome";
-import { withBase } from "@/lib/utils";
+import { canonical } from "@/lib/utils";
 
 export const Route = createFileRoute("/qibla")({
   head: () => ({
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/qibla")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: withBase("/qibla") }],
+    links: [{ rel: "canonical", href: canonical("/qibla") }],
   }),
   component: QiblaPage,
 });

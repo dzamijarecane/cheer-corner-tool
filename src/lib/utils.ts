@@ -10,3 +10,11 @@ export function cn(...inputs: ClassValue[]) {
 export function withBase(path: string) {
   return import.meta.env.BASE_URL.replace(/\/$/, "") + path;
 }
+
+/** The site's public address; used for canonical links so search engines index this domain. */
+export const SITE_URL = "https://recanedzamija.com";
+
+/** Full canonical URL for a page path, with the trailing slash GitHub Pages serves (e.g. "/about" -> ".../about/"). */
+export function canonical(path: string) {
+  return SITE_URL + (path.endsWith("/") ? path : `${path}/`);
+}
