@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { PageHeader } from "@/components/site-chrome";
-import { fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
+import { SABAH_MINUTES_BEFORE_SUNRISE, fetchPrizrenPrayerTimes } from "@/lib/prayer-times";
 import { NextPrayerCountdown } from "@/components/next-prayer-countdown";
 import { toHijri, formatHijri } from "@/lib/hijri";
 import { canonical } from "@/lib/utils";
@@ -84,6 +84,9 @@ function PrayerTimesContent() {
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
             Vremena namaza za Prizren, Kosovo prema Takvimi izvoru Islamske zajednice Kosova.
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Sabah namaz u našoj džamiji klanja se {SABAH_MINUTES_BEFORE_SUNRISE} minuta prije izlaska sunca.
           </p>
         </div>
       </section>
