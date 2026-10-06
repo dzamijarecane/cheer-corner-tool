@@ -65,10 +65,10 @@ function addMinutes(hhmm: string, offset: number): string {
 
 /**
  * Sabah namaz in Džamija Rečane is prayed this many minutes before sunrise, so it moves
- * with the sunrise every day (e.g. sunrise 06:30 -> sabah 05:42). The takvim's own
+ * with the sunrise every day (e.g. sunrise 06:30 -> sabah 05:55). The takvim's own
  * "fajr" column is the start of the sabah time, which is earlier.
  */
-export const SABAH_MINUTES_BEFORE_SUNRISE = 48;
+export const SABAH_MINUTES_BEFORE_SUNRISE = 35;
 
 export async function fetchPrizrenPrayerTimes(date = new Date()): Promise<PrayerData> {
   const city = "Prizren";
