@@ -67,6 +67,36 @@ export function SiteHeader() {
   );
 }
 
+/** The mosque's Facebook page */
+export const FACEBOOK_URL = "https://www.facebook.com/share/1JRMQJDnUC/";
+
+function FacebookIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden fill="currentColor">
+      <path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.9v3h2.6V21h3z" />
+    </svg>
+  );
+}
+
+/** "Follow us on Facebook" button; `tone` picks colours for dark (footer) or light backgrounds. */
+export function FacebookLink({ tone = "dark", label = "Pratite nas na Facebooku" }: { tone?: "dark" | "light"; label?: string }) {
+  return (
+    <a
+      href={FACEBOOK_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+        tone === "dark"
+          ? "border border-white/25 text-primary-foreground hover:bg-white/10"
+          : "bg-primary text-primary-foreground hover:brightness-125"
+      }`}
+    >
+      <FacebookIcon className="h-4 w-4" />
+      {label}
+    </a>
+  );
+}
+
 export function SiteFooter() {
   return (
     <footer className="mt-24 bg-primary text-primary-foreground">
@@ -80,6 +110,9 @@ export function SiteFooter() {
           <p className="mt-5 max-w-sm text-primary-foreground/75 leading-relaxed">
             Mjesto ibadeta, učenja i zajednice. Dobro došli, posjetioci, komšije i vjernici.
           </p>
+          <div className="mt-6">
+            <FacebookLink />
+          </div>
           <p className="mt-6 font-arabic text-2xl text-[color:var(--gold)]" dir="rtl" lang="ar">
             إِنَّمَا يَعْمُرُ مَسَاجِدَ ٱللَّهِ
           </p>

@@ -1,10 +1,10 @@
 # Džamija Rečane
 
-The website of Džamija Rečane (Rečane, Prizren, Kosovo): daily prayer times, the Hijri calendar, Qibla direction and tesbih, Qur'an and duas, events, and services for the džemat.
+The website of Džamija Rečane (Rečane, Prizren, Kosovo): daily prayer times, the Hijri calendar, Qibla direction and tesbih, Qur'an, duas and hadith, and events for the džemat.
 
-Based on the mosque's Facebook page: https://www.facebook.com/share/1DBXqaMakv/?mibextid=wwXIfr
+The mosque's Facebook page: https://www.facebook.com/share/1JRMQJDnUC/
 
-Live site: https://hurtialek66-dot.github.io/cheer-corner-tool/
+Live site: https://recanedzamija.com/
 
 ## How this site is built and published
 
