@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PageHeader } from "@/components/site-chrome";
 import { withBase } from "@/lib/utils";
 
@@ -86,12 +86,16 @@ function QiblaCompass() {
     }
   }
 
-  const rotation = heading == null ? BEARING : BEARING - heading;
   // With a live compass, how far the phone is from the Qibla (-180..180, positive = turn right)
   const offset = heading == null ? null : ((BEARING - heading + 540) % 360) - 180;
   const aligned = offset != null && Math.abs(offset) <= ALIGN_TOLERANCE;
-  // Without a compass (e.g. on a computer) the direction is always shown
-  const showKaaba = heading == null || aligned;
+  // Arrow angle relative to the top of the phone; without a compass it is the bearing from north.
+  // Keep it continuous so crossing 0°/360° turns the short way instead of spinning round.
+  const target = offset ?? BEARING;
+  const rotationRef = useRef(target);
+  const step = ((target - rotationRef.current + 540) % 360) - 180;
+  rotationRef.current += step;
+  const rotation = rotationRef.current;
 
   return (
     <div className="rounded-2xl border border-border/60 bg-card p-8 shadow-[var(--shadow-soft)]">
@@ -106,25 +110,26 @@ function QiblaCompass() {
           aligned ? "border-[var(--gold)] shadow-[var(--shadow-glow)]" : "border-border/70"
         }`}
       >
-        {["S", "I", "J", "Z"].map((l, i) => (
-          <span
-            key={l}
-            className="absolute text-xs font-semibold text-muted-foreground"
-            style={{
-              transform: `rotate(${i * 90}deg) translateY(-105px) rotate(${-i * 90}deg)`,
-            }}
-          >
-            {l}
-          </span>
-        ))}
+        {/* Top of the phone: point the arrow here to face the Qibla */}
+        <span
+          className={`absolute top-1.5 left-1/2 -translate-x-1/2 h-0 w-0 border-x-[7px] border-x-transparent border-t-[10px] transition-colors ${
+            aligned ? "border-t-[var(--gold)]" : "border-t-border"
+          }`}
+          aria-hidden
+        />
         <div
-          className={`absolute h-full w-full transition-[transform,opacity] duration-300 ${showKaaba ? "opacity-100" : "opacity-0"}`}
+          className="absolute h-full w-full transition-transform duration-300"
           style={{ transform: `rotate(${rotation}deg)` }}
-          aria-hidden={!showKaaba}
+          aria-label={`Smjer Kible: ${BEARING.toFixed(0)}°`}
+          role="img"
         >
-          <div className="absolute left-1/2 top-5 -translate-x-1/2 flex flex-col items-center">
-            <span className="text-2xl">🕋</span>
-            <div className="mt-1 h-20 w-[3px] rounded bg-[var(--gold)]" />
+          <div className="absolute left-1/2 top-4 -translate-x-1/2 flex flex-col items-center">
+            <span className="text-2xl leading-none">🕋</span>
+            <span
+              className="mt-1 h-0 w-0 border-x-[9px] border-x-transparent border-b-[14px] border-b-[var(--gold)]"
+              aria-hidden
+            />
+            <div className="h-[78px] w-[4px] rounded-b bg-[var(--gold)]" />
           </div>
         </div>
         <div className="h-3 w-3 rounded-full bg-primary" />
@@ -145,7 +150,7 @@ function QiblaCompass() {
         >
           {aligned
             ? "Okrenuti ste prema Kibli."
-            : `Polako se okrenite ${offset > 0 ? "udesno" : "ulijevo"} dok se ne pojavi Kaba.`}
+            : `Okrenite se ${offset > 0 ? "udesno" : "ulijevo"} dok strelica ne pokaže prema gore.`}
         </p>
       )}
       {status === "on" && heading == null && (
