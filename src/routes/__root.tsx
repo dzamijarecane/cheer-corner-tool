@@ -77,6 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "theme-color", content: "#315c46" },
       { title: "Džamija Rečane — Mjesto ibadeta, učenja i zajednice" },
       { name: "description", content: "Dobrodošli u džamiju Rečane. Dnevni vreme namaza, događaji zajednice, časovi Kur'ana i još mnogo toga." },
       { property: "og:type", content: "website" },
@@ -85,7 +86,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      // .ico and PNG for browsers without SVG favicon support (Safari, older phones, search results)
+      { rel: "icon", href: withBase("/favicon.ico"), sizes: "48x48" },
       { rel: "icon", href: withBase("/favicon.svg"), type: "image/svg+xml" },
+      { rel: "icon", href: withBase("/favicon-32.png"), type: "image/png", sizes: "32x32" },
+      { rel: "apple-touch-icon", href: withBase("/apple-touch-icon.png") },
+      { rel: "manifest", href: withBase("/site.webmanifest") },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

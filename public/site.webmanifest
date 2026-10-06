@@ -1,0 +1,11 @@
+{
+  "name": "Džamija Rečane",
+  "short_name": "Džamija Rečane",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#315c46",
+  "background_color": "#f7f4ec",
+  "display": "browser"
+}
