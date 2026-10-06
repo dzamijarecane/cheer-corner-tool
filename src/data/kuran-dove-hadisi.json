@@ -47,6 +47,56 @@
    "source": "Kur'an, 1. sura"
   },
   {
+   "title": "Početak sure El-Bekare",
+   "sub": "El-Bekare, 1-5",
+   "verses": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "ar": [
+    "الٓمٓ",
+    "ذَٰلِكَ ٱلۡكِتَٰبُ لَا رَيۡبَۛ فِيهِۛ هُدًى لِّلۡمُتَّقِينَ",
+    "ٱلَّذِينَ يُؤۡمِنُونَ بِٱلۡغَيۡبِ وَيُقِيمُونَ ٱلصَّلَوٰةَ وَمِمَّا رَزَقۡنَٰهُمۡ يُنفِقُونَ",
+    "وَٱلَّذِينَ يُؤۡمِنُونَ بِمَآ أُنزِلَ إِلَيۡكَ وَمَآ أُنزِلَ مِن قَبۡلِكَ وَبِٱلۡأٓخِرَةِ هُمۡ يُوقِنُونَ",
+    "أُوْلَٰٓئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمۡۖ وَأُوْلَٰٓئِكَ هُمُ ٱلۡمُفۡلِحُونَ"
+   ],
+   "tr": [
+    "Elif-lam-mim",
+    "Zalikel-kitabu la rejbe fih, huden lil-muttekin",
+    "Ellezine ju'minune bil-gajbi ve jukimunes-salate ve mimma rezaknahum junfikun",
+    "Vellezine ju'minune bima unzile ilejke ve ma unzile min kablik, ve bil-ahireti hum jukinun",
+    "Ulaike ala huden min rabbihim, ve ulaike humul-muflihun"
+   ],
+   "mean": [
+    "Elif Lām Mīm",
+    "Ova Knjiga, u koju nema nikakve sumnje, uputstvo je svima onima koji se budu Allaha bojali",
+    "onima koji u nevidljivi svijet budu vjerovali i molitvu obavljali i udjeljivali dio od onoga što im Mi budemo davali",
+    "i onima koji budu vjerovali u ono što se objavljuje tebi i u ono što je objavljeno prije tebe, i onima koji u onaj svijet budu čvrsto vjerovali",
+    "Njima će Gospodar njihov na Pravi put ukazati i oni će ono što žele ostvariti"
+   ],
+   "source": "Kur'an, 2:1-5"
+  },
+  {
+   "title": "Strpljenje i namaz",
+   "sub": "El-Bekare, 45",
+   "verses": [
+    45
+   ],
+   "ar": [
+    "وَٱسۡتَعِينُواْ بِٱلصَّبۡرِ وَٱلصَّلَوٰةِۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى ٱلۡخَٰشِعِينَ"
+   ],
+   "tr": [
+    "Vesteinu bis-sabri ves-salah, ve inneha lekebiretun illa alel-hašiin"
+   ],
+   "mean": [
+    "Pomozite sebi strpljenjem i molitvom, a to je, zaista, teško, osim poslušnima"
+   ],
+   "source": "Kur'an, 2:45"
+  },
+  {
    "title": "Sjećajte se Mene",
    "sub": "El-Bekare, 152",
    "verses": [
@@ -136,6 +186,23 @@
    "source": "Kur'an, 13:28"
   },
   {
+   "title": "Dobročinstvo prema roditeljima",
+   "sub": "El-Isra, 23",
+   "verses": [
+    23
+   ],
+   "ar": [
+    "وَقَضَىٰ رَبُّكَ أَلَّا تَعۡبُدُوٓاْ إِلَّآ إِيَّاهُ وَبِٱلۡوَٰلِدَيۡنِ إِحۡسَٰنًاۚ إِمَّا يَبۡلُغَنَّ عِندَكَ ٱلۡكِبَرَ أَحَدُهُمَآ أَوۡ كِلَاهُمَا فَلَا تَقُل لَّهُمَآ أُفٍّ وَلَا تَنۡهَرۡهُمَا وَقُل لَّهُمَا قَوۡلًا كَرِيمًا"
+   ],
+   "tr": [
+    "Ve kada rabbuke ella ta'budu illa ijjahu ve bil-validejni ihsana, imma jeblugane indekel-kibere ehaduhuma ev kilahuma fe la tekul lehuma uffin ve la tenherhuma ve kul lehuma kavlen kerima"
+   ],
+   "mean": [
+    "Gospodar tvoj zapovijeda da se samo Njemu klanjate i da roditeljima dobročinstvo činite. Kad jedno od njih dvoje, ili oboje, kod tebe starost dožive, ne reci im ni: \"Uh!\", i ne podvikni na njih, i obraćaj im se riječima poštovanja punim"
+   ],
+   "source": "Kur'an, 17:23"
+  },
+  {
    "title": "Ne gubite nadu",
    "sub": "Ez-Zumer, 53",
    "verses": [
@@ -151,6 +218,40 @@
     "Reci: \"O robovi moji koji ste se prema sebi ogriješili, ne gubite nadu u Allahovu milost! Allah će, sigurno, sve grijehe oprostiti; On, doista, mnogo prašta i On je milostiv"
    ],
    "source": "Kur'an, 39:53"
+  },
+  {
+   "title": "Vjernici su braća",
+   "sub": "El-Hudžurat, 10",
+   "verses": [
+    10
+   ],
+   "ar": [
+    "إِنَّمَا ٱلۡمُؤۡمِنُونَ إِخۡوَةٌ فَأَصۡلِحُواْ بَيۡنَ أَخَوَيۡكُمۡۚ وَٱتَّقُواْ ٱللَّهَ لَعَلَّكُمۡ تُرۡحَمُونَ"
+   ],
+   "tr": [
+    "Innemel-mu'minune ihvetun fe aslihu bejne ehavejkum, vettekullahe leallekum turhamun"
+   ],
+   "mean": [
+    "Vjernici su samo braća, zato pomirite vaša dva brata i bojte se Allaha, da bi vam se milost ukazala"
+   ],
+   "source": "Kur'an, 49:10"
+  },
+  {
+   "title": "Najugledniji kod Allaha",
+   "sub": "El-Hudžurat, 13",
+   "verses": [
+    13
+   ],
+   "ar": [
+    "يَٰٓأَيُّهَا ٱلنَّاسُ إِنَّا خَلَقۡنَٰكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلۡنَٰكُمۡ شُعُوبًا وَقَبَآئِلَ لِتَعَارَفُوٓاْۚ إِنَّ أَكۡرَمَكُمۡ عِندَ ٱللَّهِ أَتۡقَىٰكُمۡۚ إِنَّ ٱللَّهَ عَلِيمٌ خَبِيرٌ"
+   ],
+   "tr": [
+    "Ja ejjuhen-nasu inna halaknakum min zekerin ve unsa ve dže'alnakum šu'uben ve kabaile li te'arefu, inne ekremekum indallahi etkakum, innallahe alimun habir"
+   ],
+   "mean": [
+    "O ljudi, Mi vas od jednog čovjeka i jedne žene stvaramo i na narode i plemena vas dijelimo da biste se upoznali. Najugledniji kod Allaha je onaj koji Ga se najviše boji, Allah, uistinu, sve zna i nije Mu skriveno ništa"
+   ],
+   "source": "Kur'an, 49:13"
   },
   {
    "title": "Kraj sure El-Hašr",
@@ -325,6 +426,39 @@
    "source": "Kur'an, 95. sura"
   },
   {
+   "title": "Prvi objavljeni ajeti",
+   "sub": "El-Alek, 1-5",
+   "verses": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "ar": [
+    "ٱقۡرَأۡ بِٱسۡمِ رَبِّكَ ٱلَّذِي خَلَقَ",
+    "خَلَقَ ٱلۡإِنسَٰنَ مِنۡ عَلَقٍ",
+    "ٱقۡرَأۡ وَرَبُّكَ ٱلۡأَكۡرَمُ",
+    "ٱلَّذِي عَلَّمَ بِٱلۡقَلَمِ",
+    "عَلَّمَ ٱلۡإِنسَٰنَ مَا لَمۡ يَعۡلَمۡ"
+   ],
+   "tr": [
+    "Ikre' bismi rabbikellezi halak",
+    "Halakal-insane min alek",
+    "Ikre' ve rabbukel-ekrem",
+    "Ellezi alleme bil-kalem",
+    "Allemel-insane ma lem ja'lem"
+   ],
+   "mean": [
+    "Čitaj, u ime Gospodara tvoga, koji stvara",
+    "stvara čovjeka od ugruška",
+    "Čitaj, plemenit je Gospodar tvoj",
+    "koji poučava peru",
+    "koji čovjeka poučava onome što ne zna"
+   ],
+   "source": "Kur'an, 96:1-5"
+  },
+  {
    "title": "El-Kadr",
    "sub": "Noć Kadr · 5 ajeta",
    "verses": [
@@ -401,6 +535,63 @@
     "a onaj ko bude uradio koliko trun zla, vidjeće ga"
    ],
    "source": "Kur'an, 99. sura"
+  },
+  {
+   "title": "El-Adijat",
+   "sub": "Trkači · 11 ajeta",
+   "verses": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "ar": [
+    "وَٱلۡعَٰدِيَٰتِ ضَبۡحًا",
+    "فَٱلۡمُورِيَٰتِ قَدۡحًا",
+    "فَٱلۡمُغِيرَٰتِ صُبۡحًا",
+    "فَأَثَرۡنَ بِهِۦ نَقۡعًا",
+    "فَوَسَطۡنَ بِهِۦ جَمۡعًا",
+    "إِنَّ ٱلۡإِنسَٰنَ لِرَبِّهِۦ لَكَنُودٌ",
+    "وَإِنَّهُۥ عَلَىٰ ذَٰلِكَ لَشَهِيدٌ",
+    "وَإِنَّهُۥ لِحُبِّ ٱلۡخَيۡرِ لَشَدِيدٌ",
+    "أَفَلَا يَعۡلَمُ إِذَا بُعۡثِرَ مَا فِي ٱلۡقُبُورِ",
+    "وَحُصِّلَ مَا فِي ٱلصُّدُورِ",
+    "إِنَّ رَبَّهُم بِهِمۡ يَوۡمَئِذٍ لَّخَبِيرُۢ"
+   ],
+   "tr": [
+    "Vel-adijati dabha",
+    "Fel-murijati kadha",
+    "Fel-mugirati subha",
+    "Fe eserne bihi nak'a",
+    "Fe vesatne bihi džem'a",
+    "Innel-insane li rabbihi le kenud",
+    "Ve innehu ala zalike le šehid",
+    "Ve innehu li hubbil-hajri le šedid",
+    "E fe la ja'lemu iza bu'sire ma fil-kubur",
+    "Ve hussile ma fis-sudur",
+    "Inne rabbehum bihim jevmeizin le habir"
+   ],
+   "mean": [
+    "Tako mi onih koji dahćući jure",
+    "pa varnice vrcaju",
+    "i zorom napadaju",
+    "i dižu tada prašinu",
+    "pa u njoj u gomilu upadaju",
+    "čovjek je, zaista, Gospodaru svome nezahvalan",
+    "i sam je on toga, doista, svjestan",
+    "i on je, zato što voli bogatstvo, radiša",
+    "A zar on ne zna da će, kada budu oživljeni oni koji su u grobovima",
+    "i kada iziđe na vidjelo ono što je u srcima",
+    "Gospodar njihov toga Dana, sigurno, sve znati o njima"
+   ],
+   "source": "Kur'an, 100. sura"
   },
   {
    "title": "El-Kari'a",
@@ -999,6 +1190,38 @@
    "source": "El-Mu'minun, 118"
   },
   {
+   "title": "Za strpljenje i smrt u islamu",
+   "sub": "Kur'anska dova",
+   "ar": "رَبَّنَآ أَفۡرِغۡ عَلَيۡنَا صَبۡرًا وَتَوَفَّنَا مُسۡلِمِينَ",
+   "tr": "Rabbena efrig alejna sabran ve teveffena muslimin.",
+   "mean": "Gospodaru naš, daj nam snage da izdržimo i učini da kao vjernici umremo.",
+   "source": "El-A'raf, 126"
+  },
+  {
+   "title": "Dova Jusufa",
+   "sub": "Kur'anska dova",
+   "ar": "رَبِّ قَدۡ ءَاتَيۡتَنِي مِنَ ٱلۡمُلۡكِ وَعَلَّمۡتَنِي مِن تَأۡوِيلِ ٱلۡأَحَادِيثِۚ فَاطِرَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضِ أَنتَ وَلِيِّۦ فِي ٱلدُّنۡيَا وَٱلۡأٓخِرَةِۖ تَوَفَّنِي مُسۡلِمًا وَأَلۡحِقۡنِي بِٱلصَّٰلِحِينَ",
+   "tr": "Rabbi kad atejteni minel-mulki ve allemteni min te'vilil-ehadis, fatires-semavati vel-erd, ente velijji fid-dunja vel-ahireh, teveffeni muslimen ve elhikni bis-salihin.",
+   "mean": "Gospodaru moj, Ti si mi dao dio vlasti i naučio me tumačenju nekih snova! O Stvoritelju nebesa i Zemlje, Ti si Zaštitnik moj i na ovome i na onome svijetu; daj da umrem kao musliman i pridruži me onima koji su dobri.",
+   "source": "Jusuf, 101"
+  },
+  {
+   "title": "Dova Ejjuba u bolesti",
+   "sub": "Kur'anska dova",
+   "ar": "أَنِّي مَسَّنِيَ ٱلضُّرُّ وَأَنتَ أَرۡحَمُ ٱلرَّٰحِمِينَ",
+   "tr": "Enni messenijed-durru ve ente erhamur-rahimin.",
+   "mean": "Mene je nevolja snašla, a Ti si od milostivih najmilostiviji.",
+   "source": "El-Enbija, 83"
+  },
+  {
+   "title": "Za svjetlo i oprost",
+   "sub": "Kur'anska dova",
+   "ar": "رَبَّنَآ أَتۡمِمۡ لَنَا نُورَنَا وَٱغۡفِرۡ لَنَآۖ إِنَّكَ عَلَىٰ كُلِّ شَيۡءٍ قَدِيرٌ",
+   "tr": "Rabbena etmim lena nurena vagfir lena, inneke ala kulli šej'in kadir.",
+   "mean": "Gospodaru naš, učini potpunim svjetlo naše i oprosti nam jer Ti, doista, sve možeš.",
+   "source": "Et-Tahrim, 8"
+  },
+  {
    "title": "Prije jela",
    "sub": "Sunnet",
    "ar": "بِسْمِ اللَّهِ",
@@ -1181,6 +1404,38 @@
    "tr": "Subhanellezi sehhare lena haza ve ma kunna lehu mukrinin, ve inna ila rabbina lemunkalibun. Allahumme inna nes'eluke fi seferina hazel-birre vet-takva, ve minel-ameli ma terda. Allahumme hevvin alejna seferena haza vatvi anna bu'deh. Allahumme entes-sahibu fis-seferi vel-halifetu fil-ehl. Allahumme inni e'uzu bike min va'sais-seferi ve keabetil-menzari ve su'il-munkalebi fil-mali vel-ehl.",
    "mean": "Slavljen neka je Onaj Koji nam je ovo potčinio, a mi to ne bismo mogli, i mi ćemo se, zaista, svome Gospodaru vratiti. Allahu moj, molimo Te na ovom našem putovanju za dobročinstvo i bogobojaznost, i za djela kojima si Ti zadovoljan. Allahu moj, olakšaj nam ovo naše putovanje i skrati nam njegovu daljinu. Allahu moj, Ti si Pratilac na putovanju i Čuvar porodice. Allahu moj, utječem Ti se od napora putovanja, od tužnog prizora i od lošeg povratka u imetku i porodici. Pri povratku kaže isto i doda: „Ajibune, taibune, abidune, li rabbina hamidun“ (Vraćamo se, kajemo se, robujemo i svome Gospodaru zahvaljujemo).",
    "source": "Muslim, 1342"
+  },
+  {
+   "title": "Za uputu i čednost",
+   "sub": "Sunnet",
+   "ar": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
+   "tr": "Allahumme inni es'elukel-huda vet-tuka vel-afafe vel-gina.",
+   "mean": "Allahu moj, molim Te za uputu, bogobojaznost, čednost i neovisnost od ljudi.",
+   "source": "Muslim, 2721"
+  },
+  {
+   "title": "Za korisno znanje i skrušeno srce",
+   "sub": "Sunnet",
+   "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ وَالْجُبْنِ وَالْبُخْلِ وَالْهَرَمِ وَعَذَابِ الْقَبْرِ اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا أَنْتَ وَلِيُّهَا وَمَوْلاَهَا اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لاَ يَنْفَعُ وَمِنْ قَلْبٍ لاَ يَخْشَعُ وَمِنْ نَفْسٍ لاَ تَشْبَعُ وَمِنْ دَعْوَةٍ لاَ يُسْتَجَابُ لَهَا",
+   "tr": "Allahumme inni e'uzu bike minel-adžzi vel-keseli vel-džubni vel-buhli vel-herami ve azabil-kabr. Allahumme ati nefsi takvaha ve zekkiha, ente hajru men zekkaha, ente velijjuha ve mevlaha. Allahumme inni e'uzu bike min ilmin la jenfe', ve min kalbin la jahše', ve min nefsin la tešbe', ve min da'vetin la justedžabu leha.",
+   "mean": "Allahu moj, utječem Ti se od nemoći i lijenosti, od kukavičluka i škrtosti, od duboke starosti i od kazne u kaburu. Allahu moj, podari mojoj duši bogobojaznost i očisti je, Ti si Najbolji Koji je čisti, Ti si njen Zaštitnik i Gospodar. Allahu moj, utječem Ti se od znanja koje ne koristi, od srca koje nije skrušeno, od duše koja se ne zasićuje i od dove koja se ne prima.",
+   "source": "Muslim, 2722"
+  },
+  {
+   "title": "Za očuvanje Allahovih blagodati",
+   "sub": "Sunnet",
+   "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ وَتَحَوُّلِ عَافِيَتِكَ وَفُجَاءَةِ نِقْمَتِكَ وَجَمِيعِ سَخَطِكَ",
+   "tr": "Allahumme inni e'uzu bike min zevali ni'metike, ve tehavvuli afijetike, ve fudž'eti nikmetike, ve džemi'i sahatike.",
+   "mean": "Allahu moj, utječem Ti se od nestanka Tvoje blagodati, od promjene zdravlja koje si mi dao, od Tvoje iznenadne kazne i od svake Tvoje srdžbe.",
+   "source": "Muslim, 2739"
+  },
+  {
+   "title": "Riznica Dženneta",
+   "sub": "Sunnet",
+   "ar": "لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
+   "tr": "La havle ve la kuvvete illa billah.",
+   "mean": "Nema snage ni moći osim s Allahom. Poslanik, s.a.v.s., je za ove riječi rekao da su riznica od riznica Dženneta.",
+   "source": "Buhari, 4205; Muslim, 2704"
   }
  ],
  "hadisi": [
@@ -1438,6 +1693,78 @@
    "ar": "سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِي ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظِلُّهُ الإِمَامُ الْعَادِلُ، وَشَابٌّ نَشَأَ فِي عِبَادَةِ رَبِّهِ، وَرَجُلٌ قَلْبُهُ مُعَلَّقٌ فِي الْمَسَاجِدِ، وَرَجُلاَنِ تَحَابَّا فِي اللَّهِ اجْتَمَعَا عَلَيْهِ وَتَفَرَّقَا عَلَيْهِ، وَرَجُلٌ طَلَبَتْهُ امْرَأَةٌ ذَاتُ مَنْصِبٍ وَجَمَالٍ فَقَالَ إِنِّي أَخَافُ اللَّهَ. وَرَجُلٌ تَصَدَّقَ أَخْفَى حَتَّى لاَ تَعْلَمَ شِمَالُهُ مَا تُنْفِقُ يَمِينُهُ، وَرَجُلٌ ذَكَرَ اللَّهَ خَالِيًا فَفَاضَتْ عَيْنَاهُ",
    "mean": "Sedmoricu će Allah zakloniti Svojim hladom na Dan kada ne bude drugog hlada osim Njegovog: pravednog vladara; mladića koji je odrastao u ibadetu svome Gospodaru; čovjeka čije je srce vezano za džamije; dvojicu koji se vole radi Allaha, radi Njega se sastaju i radi Njega rastaju; čovjeka kojeg pozove ugledna i lijepa žena, a on kaže: „Ja se bojim Allaha“; čovjeka koji udijeli sadaku pa je sakrije tako da njegova lijeva ruka ne zna šta je udijelila desna; i čovjeka koji se u samoći sjeti Allaha pa mu suze poteku.",
    "source": "Buhari, 660; Muslim, 1031",
+   "excerpt": false
+  },
+  {
+   "title": "Vjera je lahka",
+   "sub": "Prenosi Ebu Hurejre",
+   "ar": "إِنَّ الدِّينَ يُسْرٌ، وَلَنْ يُشَادَّ الدِّينَ أَحَدٌ إِلاَّ غَلَبَهُ، فَسَدِّدُوا وَقَارِبُوا وَأَبْشِرُوا، وَاسْتَعِينُوا بِالْغَدْوَةِ وَالرَّوْحَةِ وَشَىْءٍ مِنَ الدُّلْجَةِ",
+   "mean": "Vjera je, zaista, lahka. Ko god bude pretjerivao u vjeri, ona će ga nadvladati. Zato budite umjereni, nastojte se približiti savršenstvu, radujte se i pomažite se ibadetom ujutro, navečer i dijelom noći.",
+   "source": "Buhari, 39",
+   "excerpt": false
+  },
+  {
+   "title": "Stid donosi samo dobro",
+   "sub": "Prenosi Imran b. Husajn",
+   "ar": "الْحَيَاءُ لاَ يَأْتِي إِلاَّ بِخَيْرٍ",
+   "mean": "Stid (haja) donosi samo dobro.",
+   "source": "Buhari, 6117; Muslim, 37",
+   "excerpt": false
+  },
+  {
+   "title": "Olakšavajte, a ne otežavajte",
+   "sub": "Prenosi Enes b. Malik",
+   "ar": "يَسِّرُوا وَلاَ تُعَسِّرُوا، وَبَشِّرُوا وَلاَ تُنَفِّرُوا",
+   "mean": "Olakšavajte, a ne otežavajte; obradujte ljude, a ne odbijajte ih.",
+   "source": "Buhari, 69; Muslim, 1734",
+   "excerpt": false
+  },
+  {
+   "title": "Vjernici su kao jedno tijelo",
+   "sub": "Prenosi En-Nu'man b. Bešir",
+   "ar": "مَثَلُ الْمُؤْمِنِينَ فِي تَوَادِّهِمْ وَتَرَاحُمِهِمْ وَتَعَاطُفِهِمْ مَثَلُ الْجَسَدِ إِذَا اشْتَكَى مِنْهُ عُضْوٌ تَدَاعَى لَهُ سَائِرُ الْجَسَدِ بِالسَّهَرِ وَالْحُمَّى",
+   "mean": "Primjer vjernika u njihovoj međusobnoj ljubavi, milosti i samilosti je kao primjer tijela: kada jedan njegov dio oboli, cijelo tijelo zbog njega bdije i gori u groznici.",
+   "source": "Buhari, 6011; Muslim, 2586",
+   "excerpt": false
+  },
+  {
+   "title": "Musliman je brat muslimanu",
+   "sub": "Prenosi Abdullah b. Omer",
+   "ar": "الْمُسْلِمُ أَخُو الْمُسْلِمِ، لاَ يَظْلِمُهُ وَلاَ يُسْلِمُهُ، وَمَنْ كَانَ فِي حَاجَةِ أَخِيهِ كَانَ اللَّهُ فِي حَاجَتِهِ، وَمَنْ فَرَّجَ عَنْ مُسْلِمٍ كُرْبَةً فَرَّجَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرُبَاتِ يَوْمِ الْقِيَامَةِ، وَمَنْ سَتَرَ مُسْلِمًا سَتَرَهُ اللَّهُ يَوْمَ الْقِيَامَةِ",
+   "mean": "Musliman je brat muslimanu: ne čini mu nepravdu i ne ostavlja ga na cjedilu. Ko bude u pomoći svome bratu, Allah će biti u pomoći njemu; ko otkloni muslimanu neku nevolju, Allah će njemu otkloniti jednu od nevolja Sudnjeg dana; a ko pokrije (sramotu) muslimana, Allah će njega pokriti na Sudnjem danu.",
+   "source": "Buhari, 2442; Muslim, 2580",
+   "excerpt": false
+  },
+  {
+   "title": "Makar polovinom hurme",
+   "sub": "Prenosi Adij b. Hatim",
+   "ar": "اتَّقُوا النَّارَ وَلَوْ بِشِقِّ تَمْرَةٍ",
+   "mean": "Zaštitite se od vatre, makar i polovinom hurme (datom u sadaku).",
+   "source": "Buhari, 1417; Muslim, 1016",
+   "excerpt": false
+  },
+  {
+   "title": "Sadaka ne umanjuje imetak",
+   "sub": "Prenosi Ebu Hurejre",
+   "ar": "مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ وَمَا زَادَ اللَّهُ عَبْدًا بِعَفْوٍ إِلاَّ عِزًّا وَمَا تَوَاضَعَ أَحَدٌ لِلَّهِ إِلاَّ رَفَعَهُ اللَّهُ",
+   "mean": "Sadaka ne umanjuje imetak; Allah robu koji prašta povećava samo ugled; i ko se ponizi radi Allaha, Allah ga uzdigne.",
+   "source": "Muslim, 2588",
+   "excerpt": false
+  },
+  {
+   "title": "Milost prema ljudima",
+   "sub": "Prenosi Džerir b. Abdullah",
+   "ar": "لاَ يَرْحَمُ اللَّهُ مَنْ لاَ يَرْحَمُ النَّاسَ",
+   "mean": "Allah se neće smilovati onome ko se ne smiluje ljudima.",
+   "source": "Buhari, 7376; Muslim, 2319",
+   "excerpt": false
+  },
+  {
+   "title": "Dobročinstvo u svemu",
+   "sub": "Prenosi Šeddad b. Evs",
+   "ar": "إِنَّ اللَّهَ كَتَبَ الإِحْسَانَ عَلَى كُلِّ شَىْءٍ فَإِذَا قَتَلْتُمْ فَأَحْسِنُوا الْقِتْلَةَ وَإِذَا ذَبَحْتُمْ فَأَحْسِنُوا الذَّبْحَ وَلْيُحِدَّ أَحَدُكُمْ شَفْرَتَهُ فَلْيُرِحْ ذَبِيحَتَهُ",
+   "mean": "Allah je propisao dobročinstvo u svemu: kada ubijate (s pravom), ubijajte na lijep način, a kada koljete, koljite na lijep način: neka svako od vas naoštri nož i olakša životinji koju kolje.",
+   "source": "Muslim, 1955",
    "excerpt": false
   }
  ]
