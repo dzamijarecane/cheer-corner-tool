@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       { title: "Džamija Rečane, Prizren, Kosovo" },
       { name: "description", content: "Džamija Rečane u Prizrenu, Kosovo. Dobrodošli na dnevne namaze, časove Kur'ana i događaje zajednice." },
       { property: "og:title", content: "Džamija Rečane, Prizren, Kosovo" },
-      { property: "og:description", content: "Dnevni namazi, časovi i događaji zajednice u Prizrenu, Kosovo." },
+      { property: "og:description", content: "Vaktija, Kur'an i dove, hadisi, kalendar i događaji džemata u Rečanu kod Prizrena." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: canonical("/") },
       { name: "twitter:card", content: "summary_large_image" },

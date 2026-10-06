@@ -13,7 +13,7 @@ import { type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "../components/site-chrome";
 import { Motion3D } from "../components/motion-3d";
-import { withBase } from "@/lib/utils";
+import { SITE_URL, withBase } from "@/lib/utils";
 
 function NotFoundComponent() {
   return (
@@ -82,6 +82,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Dobrodošli u džamiju Rečane. Dnevni vreme namaza, događaji zajednice, časovi Kur'ana i još mnogo toga." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Džamija Rečane" },
+      { property: "og:locale", content: "bs_BA" },
+      // Preview image for links shared on Facebook, WhatsApp, Viber, etc. (must be an absolute URL)
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Džamija Rečane u sumrak, Rečane, Prizren, Kosovo" },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
