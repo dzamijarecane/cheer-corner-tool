@@ -48,6 +48,35 @@ const TABS = [
 ] as const;
 type Tab = (typeof TABS)[number]["id"];
 
+const COUNTS: Record<Tab, string> = {
+  sure: `${SURE.length} unosa`,
+  dove: `${DOVE.length} dova`,
+  hadisi: `${HADISI.length} hadisa`,
+};
+
+function TabIcon({ id, className = "" }: { id: Tab; className?: string }) {
+  const common = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, className, "aria-hidden": true };
+  if (id === "sure")
+    return (
+      <svg {...common}>
+        <path d="M12 6.5C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5V5c-3-.5-6 0-8 1.5z" />
+        <path d="M12 6.5v13" />
+      </svg>
+    );
+  if (id === "dove")
+    return (
+      <svg {...common}>
+        <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />
+        <path d="m17 4 .6 1.4L19 6l-1.4.6L17 8l-.6-1.4L15 6l1.4-.6z" fill="currentColor" />
+      </svg>
+    );
+  return (
+    <svg {...common}>
+      <path d="M7 7h4v4c0 3-1.5 5-4 6M15 7h4v4c0 3-1.5 5-4 6" />
+    </svg>
+  );
+}
+
 const toArabicDigits = (n: number) => String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[Number(d)]);
 
 function QuranPage() {
@@ -62,18 +91,30 @@ function QuranPage() {
       />
       <section className="py-16">
         <div className="mx-auto max-w-4xl px-6">
-          <div className="inline-flex flex-wrap rounded-full border border-border/60 bg-card p-1">
-            {TABS.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setTab(t.id)}
-                className={`rounded-full px-5 sm:px-6 py-2 text-sm font-medium transition ${
-                  tab === t.id ? "bg-primary text-primary-foreground" : "text-muted-foreground"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
+          <div role="tablist" aria-label="Odaberite sadržaj" className="grid grid-cols-3 gap-2 sm:gap-4">
+            {TABS.map((t) => {
+              const active = tab === t.id;
+              return (
+                <button
+                  key={t.id}
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setTab(t.id)}
+                  className={`relative flex flex-col items-center gap-1.5 rounded-2xl border-2 px-2 py-4 sm:py-5 text-center transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] focus-visible:ring-offset-2 ${
+                    active
+                      ? "border-primary bg-primary text-primary-foreground shadow-[var(--shadow-soft)]"
+                      : "border-primary/55 bg-card text-primary shadow-sm hover:border-[var(--gold)] hover:bg-secondary/60"
+                  }`}
+                >
+                  <TabIcon id={t.id} className={`h-6 w-6 ${active ? "text-[color:var(--gold)]" : "text-[color:var(--wood)]"}`} />
+                  <span className="font-display text-lg sm:text-2xl leading-tight">{t.label}</span>
+                  <span className={`text-[11px] sm:text-xs uppercase tracking-widest ${active ? "text-[color:var(--gold)]" : "text-muted-foreground"}`}>
+                    {COUNTS[t.id]}
+                  </span>
+                  {active && <span className="absolute -bottom-[2px] left-1/2 h-1 w-12 -translate-x-1/2 rounded-full bg-[var(--gold)]" aria-hidden />}
+                </button>
+              );
+            })}
           </div>
 
           {tab === "hadisi" && (
