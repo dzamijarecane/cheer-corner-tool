@@ -58,7 +58,19 @@ function PrayerTimesContent() {
         eyebrow="Vreme namaza · Prizren, Kosovo"
         title="Vremenski raspored namaza"
         description={`${data.date.readable} · ${formatHijri(toHijri(new Date()))}`}
-      />
+      >
+        <figure className="mt-8 max-w-2xl border-l-2 border-[var(--gold)] pl-5">
+          <p dir="rtl" lang="ar" className="font-arabic text-2xl md:text-3xl leading-[1.9] text-[color:var(--gold)] text-right md:text-left">
+            إِنَّ ٱلصَّلَوٰةَ كَانَتۡ عَلَى ٱلۡمُؤۡمِنِينَ كِتَٰبًا مَّوۡقُوتًا
+          </p>
+          <blockquote className="mt-2 font-display text-xl md:text-2xl text-primary-foreground/90">
+            „…vjernicima je propisano da u određeno vrijeme namaz obavljaju.“
+          </blockquote>
+          <figcaption className="mt-2 text-xs uppercase tracking-widest text-primary-foreground/60">
+            En-Nisa', 103
+          </figcaption>
+        </figure>
+      </PageHeader>
       <section className="py-16">
         <div className="mx-auto max-w-4xl px-6">
           <div className="mb-8">

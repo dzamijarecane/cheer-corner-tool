@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 
 const NAV = [
@@ -147,7 +148,17 @@ export function SiteFooter() {
   );
 }
 
-export function PageHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
+export function PageHeader({
+  eyebrow,
+  title,
+  description,
+  children,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  children?: ReactNode;
+}) {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
       <div className="absolute inset-0 overflow-hidden opacity-[0.14]" aria-hidden>
@@ -162,6 +173,7 @@ export function PageHeader({ eyebrow, title, description }: { eyebrow: string; t
         {description && description.trim() && (
           <p className="mt-6 text-lg text-primary-foreground/75 max-w-2xl">{description}</p>
         )}
+        {children}
       </div>
     </section>
   );
