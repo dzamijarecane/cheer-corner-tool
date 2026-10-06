@@ -17,9 +17,9 @@ const prayerTimesQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Džamija Rečane — Prizren, Kosovo" },
-      { name: "description", content: "Džamija Rečane u Prizrenu, Kosovo — dobrodošli na dnevne namaze, časove Kur'ana i događaje zajednice." },
-      { property: "og:title", content: "Džamija Rečane — Prizren, Kosovo" },
+      { title: "Džamija Rečane, Prizren, Kosovo" },
+      { name: "description", content: "Džamija Rečane u Prizrenu, Kosovo. Dobrodošli na dnevne namaze, časove Kur'ana i događaje zajednice." },
+      { property: "og:title", content: "Džamija Rečane, Prizren, Kosovo" },
       { property: "og:description", content: "Dnevni namazi, časovi i događaji zajednice u Prizrenu, Kosovo." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },

@@ -8,7 +8,7 @@ export const Route = createFileRoute("/calendar")({
     meta: [
       { title: "Hidžretski kalendar i praznici | Džamija Rečane" },
       { name: "description", content: "Današnji hidžretski datum te datumi Ramazana, Bajrama i drugih dana za koje postoji dokaz iz sunneta." },
-      { property: "og:title", content: "Hidžretski kalendar i praznici — Džamija Rečane" },
+      { property: "og:title", content: "Hidžretski kalendar i praznici | Džamija Rečane" },
       { property: "og:description", content: "Islamski datumi: Ramazan, Bajrami, Arefat i Ašura." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -60,7 +60,7 @@ function CalendarPage() {
                     <p className="mt-2 text-xs font-medium text-[color:var(--wood)]">
                       {h.dateSource === "takvim"
                         ? "Datum prema takvimu Islamske zajednice."
-                        : "Približan datum – početak ramazana određuje se prema takvimu Islamske zajednice."}
+                        : "Približan datum. Početak ramazana određuje se prema takvimu Islamske zajednice."}
                     </p>
                   )}
                   <div className="mt-5 border-t border-border/60 pt-4">

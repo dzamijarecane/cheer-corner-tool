@@ -5,7 +5,7 @@ import { withBase } from "@/lib/utils";
 export const Route = createFileRoute("/events")({
   head: () => ({
     meta: [
-      { title: "Događaji — Džamija Rečane" },
+      { title: "Događaji | Džamija Rečane" },
       { name: "description", content: "Predstojeći događaji, predavanja, iftari, bajramski namazi i programi zajednice u džamiji Rečane." },
       { property: "og:title", content: "Događaji u džamiji Rečane" },
       { property: "og:description", content: "Predavanja, iftari, bajramski namazi i programi zajednice." },

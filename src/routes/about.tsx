@@ -6,7 +6,7 @@ import { withBase } from "@/lib/utils";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "O nama — Džamija Rečane" },
+      { title: "O nama | Džamija Rečane" },
       { name: "description", content: "Naša istorija, misija i zajednica kojoj služimo u džamiji Rečane." },
       { property: "og:title", content: "O džamiji Rečane" },
       { property: "og:description", content: "Naša istorija, misija i zajednica." },

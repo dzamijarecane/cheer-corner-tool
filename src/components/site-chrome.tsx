@@ -78,7 +78,7 @@ export function SiteFooter() {
             <span className="font-display text-2xl">Džamija Rečane</span>
           </div>
           <p className="mt-5 max-w-sm text-primary-foreground/75 leading-relaxed">
-            Mjesto ibadeta, učenja i zajednice. Dobro došli — posjetioci, komšije i vjernici.
+            Mjesto ibadeta, učenja i zajednice. Dobro došli, posjetioci, komšije i vjernici.
           </p>
           <p className="mt-6 font-arabic text-2xl text-[color:var(--gold)]" dir="rtl" lang="ar">
             إِنَّمَا يَعْمُرُ مَسَاجِدَ ٱللَّهِ

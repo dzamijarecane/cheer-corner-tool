@@ -13,9 +13,9 @@ export const Route = createFileRoute("/quran")({
       {
         name: "description",
         content:
-          "Sure i ajeti iz Kur'ana, svakodnevne dove i hadisi iz Buharije i Muslima — na arapskom, s transkripcijom i prijevodom na bosanski.",
+          "Sure i ajeti iz Kur'ana, svakodnevne dove i hadisi iz Buharije i Muslima, na arapskom, s transkripcijom i prijevodom na bosanski.",
       },
-      { property: "og:title", content: "Kur'an, dove i hadisi — Džamija Rečane" },
+      { property: "og:title", content: "Kur'an, dove i hadisi | Džamija Rečane" },
       { property: "og:description", content: "Sure, dove i vjerodostojni hadisi s prijevodom." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,7 +58,7 @@ function QuranPage() {
       <PageHeader
         eyebrow="Kur'an · Dove · Hadisi"
         title="Sure, dove i hadisi"
-        description="Na arapskom, s transkripcijom i prijevodom na bosanski — iz provjerenih izvora."
+        description="Na arapskom, s transkripcijom i prijevodom na bosanski, iz provjerenih izvora."
       />
       <section className="py-16">
         <div className="mx-auto max-w-4xl px-6">

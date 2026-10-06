@@ -8,7 +8,7 @@ export const Route = createFileRoute("/qibla")({
     meta: [
       { title: "Kibla i tesbih | Džamija Rečane" },
       { name: "description", content: "Odredite smjer Kible iz Rečana i Prizrena i koristite digitalni tesbih za zikr." },
-      { property: "og:title", content: "Kibla i tesbih — Džamija Rečane" },
+      { property: "og:title", content: "Kibla i tesbih | Džamija Rečane" },
       { property: "og:description", content: "Smjer Kible za Prizren i digitalni brojač zikra." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -158,7 +158,7 @@ function QiblaCompass() {
       )}
       {status === "unsupported" && (
         <p className="mt-4 text-sm text-muted-foreground">
-          Vaš uređaj nema kompas — koristite smjer {BEARING.toFixed(0)}° na klasičnom kompasu.
+          Vaš uređaj nema kompas. Koristite smjer {BEARING.toFixed(0)}° na klasičnom kompasu.
         </p>
       )}
     </div>

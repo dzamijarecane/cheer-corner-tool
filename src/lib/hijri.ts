@@ -123,7 +123,7 @@ const HOLIDAYS: HolidayDef[] = [
     proof: {
       sunnah: true,
       text:
-        "Post ramazana je farz (El-Bekare, 183–185). Poslanik, s.a.v.s., je rekao: „Kada ga (mlađak) vidite, postite, a kada ga vidite, prestanite postiti“ (Buhari, 1900; Muslim, 1080), " +
+        "Post ramazana je farz (El-Bekare, 183-185). Poslanik, s.a.v.s., je rekao: „Kada ga (mlađak) vidite, postite, a kada ga vidite, prestanite postiti“ (Buhari, 1900; Muslim, 1080), " +
         "i: „Ko posti ramazan vjerujući i nadajući se nagradi, bit će mu oprošteni prethodni grijesi“ (Buhari, 38; Muslim, 760).",
     },
   },
@@ -172,9 +172,9 @@ const HOLIDAYS: HolidayDef[] = [
     proof: {
       sunnah: true,
       text:
-        "Poslanik, s.a.v.s., je klanjao bajram-namaz (Buhari, 956) i klao kurban – dva ovna, svojom rukom (Buhari, 5565; Muslim, 1966). " +
-        "Zabranio je post na dan bajrama (Buhari, 1991; Muslim, 827) i rekao: „Dani tešrika su dani jela, pića i spominjanja Allaha“ (Muslim, 1141) – " +
-        "to su tri dana nakon Kurban-bajrama.",
+        "Poslanik, s.a.v.s., je klanjao bajram-namaz (Buhari, 956) i klao kurban, dva ovna, svojom rukom (Buhari, 5565; Muslim, 1966). " +
+        "Zabranio je post na dan bajrama (Buhari, 1991; Muslim, 827) i rekao: „Dani tešrika su dani jela, pića i spominjanja Allaha“ (Muslim, 1141). " +
+        "To su tri dana nakon Kurban-bajrama.",
     },
   },
 ];
