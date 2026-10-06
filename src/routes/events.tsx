@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "@/components/site-chrome";
+import { FacebookLink, PageHeader } from "@/components/site-chrome";
 import { withBase } from "@/lib/utils";
 
 export const Route = createFileRoute("/events")({
@@ -75,6 +75,14 @@ function Events() {
               <p className="text-muted-foreground leading-relaxed">{e.body}</p>
             </article>
           ))}
+        </div>
+        <div className="mx-auto max-w-6xl px-6 mt-10">
+          <div className="rounded-xl border border-border/60 bg-secondary/40 p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            <p className="text-muted-foreground leading-relaxed">
+              Najnovije obavijesti, termine i slike objavljujemo na našoj Facebook stranici.
+            </p>
+            <FacebookLink tone="light" label="Facebook stranica" />
+          </div>
         </div>
       </section>
     </>
