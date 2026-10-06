@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { PageHeader } from "@/components/site-chrome";
-import { withBase } from "@/lib/utils";
+import { canonical } from "@/lib/utils";
 // Generated from verified sources: Qur'an text of the King Fahd Complex (Hafs),
 // Besim Korkut's translation, and Sahih al-Bukhari / Sahih Muslim (Arabic, standard numbering).
 import content from "@/data/kuran-dove-hadisi.json";
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/quran")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: withBase("/quran") }],
+    links: [{ rel: "canonical", href: canonical("/quran") }],
   }),
   component: QuranPage,
 });

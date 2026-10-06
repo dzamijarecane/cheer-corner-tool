@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FacebookLink, PageHeader } from "@/components/site-chrome";
-import { withBase } from "@/lib/utils";
+import { canonical } from "@/lib/utils";
 
 export const Route = createFileRoute("/events")({
   head: () => ({
@@ -10,10 +10,10 @@ export const Route = createFileRoute("/events")({
       { property: "og:title", content: "Događaji u džamiji Rečane" },
       { property: "og:description", content: "Predavanja, iftari, bajramski namazi i programi zajednice." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/events" },
+      { property: "og:url", content: canonical("/events") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: withBase("/events") }],
+    links: [{ rel: "canonical", href: canonical("/events") }],
   }),
   component: Events,
 });

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site-chrome";
 import duskImg from "@/assets/mosque-recane-dusk.jpg";
-import { withBase } from "@/lib/utils";
+import { canonical } from "@/lib/utils";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -11,10 +11,10 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "O džamiji Rečane" },
       { property: "og:description", content: "Naša istorija, misija i zajednica." },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: canonical("/about") },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: withBase("/about") }],
+    links: [{ rel: "canonical", href: canonical("/about") }],
   }),
   component: About,
 });

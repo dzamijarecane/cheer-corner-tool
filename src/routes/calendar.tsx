@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site-chrome";
 import { toHijri, formatHijri, upcomingHolidays, daysUntil } from "@/lib/hijri";
-import { withBase } from "@/lib/utils";
+import { canonical } from "@/lib/utils";
 
 export const Route = createFileRoute("/calendar")({
   head: () => ({
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/calendar")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: withBase("/calendar") }],
+    links: [{ rel: "canonical", href: canonical("/calendar") }],
   }),
   component: CalendarPage,
 });
