@@ -44,7 +44,7 @@ function PrayerTimesPage() {
 function PrayerTimesContent() {
   const { data } = useSuspenseQuery(prayerTimesQuery);
   const rows = [
-    { name: "Sabah", adhan: data.timings.Fajr },
+    { name: "Sabah", adhan: data.timings.Fajr, note: "Klanjanje u džamiji Rečane" },
     { name: "Izlazak sunca", adhan: data.timings.Sunrise },
     { name: "Podne", adhan: data.timings.Dhuhr },
     { name: "Ikindija", adhan: data.timings.Asr },
@@ -87,7 +87,12 @@ function PrayerTimesContent() {
               <tbody className="divide-y divide-border/60">
                 {rows.map((p) => (
                   <tr key={p.name} className="hover:bg-secondary/50 transition">
-                    <td className="px-6 py-4 font-display text-xl text-primary">{p.name}</td>
+                    <td className="px-6 py-4">
+                      <span className="block font-display text-xl text-primary">{p.name}</span>
+                      {"note" in p && p.note && (
+                        <span className="block text-xs uppercase tracking-widest text-[color:var(--wood)] mt-0.5">{p.note}</span>
+                      )}
+                    </td>
                     <td className="px-6 py-4 tabular-nums text-lg font-semibold">{p.adhan}</td>
                   </tr>
                 ))}
@@ -95,10 +100,11 @@ function PrayerTimesContent() {
             </table>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            Vremena namaza za Prizren, Kosovo prema Takvimi izvoru Islamske zajednice Kosova.
+            Vrijeme sabaha je vrijeme kada se sabah-namaz klanja u džamiji Rečane: {SABAH_MINUTES_BEFORE_SUNRISE}{" "}
+            minuta prije izlaska sunca, pa se pomjera svaki dan zajedno s izlaskom sunca.
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            Sabah namaz u našoj džamiji klanja se {SABAH_MINUTES_BEFORE_SUNRISE} minuta prije izlaska sunca.
+            Ostala vremena namaza za Prizren, Kosovo prema Takvimi izvoru Islamske zajednice Kosova.
           </p>
         </div>
       </section>

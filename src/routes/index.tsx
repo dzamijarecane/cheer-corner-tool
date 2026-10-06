@@ -207,7 +207,7 @@ function PrayerWindows() {
   }, []);
 
   const items = [
-    { name: "Sabah", adhan: data.timings.Fajr },
+    { name: "Sabah", adhan: data.timings.Fajr, note: "Rečane" },
     { name: "Podne", adhan: data.timings.Dhuhr },
     { name: "Ikindija", adhan: data.timings.Asr },
     { name: "Akšam", adhan: data.timings.Maghrib },
@@ -259,12 +259,15 @@ function PrayerWindows() {
               <div className={`text-[11px] sm:text-sm ${next ? "font-semibold" : "text-primary-foreground/75"}`}>{p.name}</div>
               <div className="mt-2 font-display text-xl sm:text-3xl tabular-nums">{p.adhan}</div>
               <div className={`mt-1 text-[10px] sm:text-xs uppercase tracking-widest ${next ? "" : "text-primary-foreground/50"}`}>
-                {next ? "Sljedeći" : "Ezan"}
+                {next ? "Sljedeći" : ("note" in p && p.note) || "Ezan"}
               </div>
             </div>
           );
         })}
       </div>
+      <p className="mt-4 text-xs sm:text-sm text-primary-foreground/60">
+        Sabah je naveden po vremenu klanjanja u džamiji Rečane.
+      </p>
     </div>
   );
 }
