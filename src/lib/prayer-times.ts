@@ -70,6 +70,9 @@ function addMinutes(hhmm: string, offset: number): string {
  */
 export const SABAH_MINUTES_BEFORE_SUNRISE = 35;
 
+/** Podne namaz in Džamija Rečane is prayed at this fixed time every day. */
+export const PODNE_TIME = "13:00";
+
 export async function fetchPrizrenPrayerTimes(date = new Date()): Promise<PrayerData> {
   const city = "Prizren";
   // Prizren isn't in the city offset table (the reference city Deçan sits ~20km
@@ -85,7 +88,7 @@ export async function fetchPrizrenPrayerTimes(date = new Date()): Promise<Prayer
     Imsak: addMinutes(entry.imsak, offset),
     Fajr: addMinutes(entry.sunrise, offset - SABAH_MINUTES_BEFORE_SUNRISE),
     Sunrise: addMinutes(entry.sunrise, offset),
-    Dhuhr: addMinutes(entry.dhuhr, offset),
+    Dhuhr: PODNE_TIME,
     Asr: addMinutes(entry.asr, offset),
     Maghrib: addMinutes(entry.maghrib, offset),
     Isha: addMinutes(entry.isha, offset),

@@ -46,7 +46,7 @@ function PrayerTimesContent() {
   const rows = [
     { name: "Sabah", adhan: data.timings.Fajr, note: "Klanjanje u džamiji Rečane" },
     { name: "Izlazak sunca", adhan: data.timings.Sunrise },
-    { name: "Podne", adhan: data.timings.Dhuhr },
+    { name: "Podne", adhan: data.timings.Dhuhr, note: "Klanjanje u džamiji Rečane" },
     { name: "Ikindija", adhan: data.timings.Asr },
     { name: "Akšam", adhan: data.timings.Maghrib },
     { name: "Jacija", adhan: data.timings.Isha },
@@ -100,7 +100,7 @@ function PrayerTimesContent() {
             </table>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            Sabah-namaz se u ovo vrijeme klanja u džamiji Rečane.
+            Sabah i podne se u ovo vrijeme klanjaju u džamiji Rečane.
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
             Ostala vremena namaza za Prizren, Kosovo prema Takvimi izvoru Islamske zajednice Kosova.
