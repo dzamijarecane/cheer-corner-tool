@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FacebookLink, PageHeader } from "@/components/site-chrome";
 import { canonical } from "@/lib/utils";
+import { NotificationsButton } from "@/components/notifications";
 
 export const Route = createFileRoute("/events")({
   head: () => ({
@@ -79,9 +80,13 @@ function Events() {
         <div className="mx-auto max-w-6xl px-6 mt-10">
           <div className="rounded-xl border border-border/60 bg-secondary/40 p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
             <p className="text-muted-foreground leading-relaxed">
-              Najnovije obavijesti, termine i slike objavljujemo na našoj Facebook stranici.
+              Najnovije obavijesti, termine i slike objavljujemo na našoj Facebook stranici. Uključite
+              obavještenja i telefon će vam javiti kad objavimo nešto novo.
             </p>
-            <FacebookLink tone="light" label="Facebook stranica" />
+            <div className="flex flex-wrap gap-3">
+              <NotificationsButton tone="light" />
+              <FacebookLink tone="light" label="Facebook stranica" />
+            </div>
           </div>
         </div>
       </section>

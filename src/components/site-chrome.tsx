@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { InstallAppFooter } from "./install-app";
+import { NotificationsButton } from "./notifications";
 
 const NAV = [
   { to: "/", label: "Početna" },
@@ -116,6 +117,9 @@ export function SiteFooter() {
             <FacebookLink />
           </div>
           <InstallAppFooter />
+          <div className="mt-4">
+            <NotificationsButton />
+          </div>
           <p className="mt-6 font-arabic text-2xl text-[color:var(--gold)]" dir="rtl" lang="ar">
             إِنَّمَا يَعْمُرُ مَسَاجِدَ ٱللَّهِ
           </p>

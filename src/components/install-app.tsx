@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { withBase } from "@/lib/utils";
+import { SERVICE_WORKER } from "./notifications";
 
 // Chrome/Edge/Samsung fire this before showing their own install prompt; we keep it
 // and show it from our button instead.
@@ -67,7 +68,16 @@ async function runPrompt(prompt: InstallPromptEvent) {
 export function useServiceWorker() {
   useEffect(() => {
     if (!import.meta.env.PROD || !("serviceWorker" in navigator)) return;
-    navigator.serviceWorker.register(withBase("/sw.js"), { scope: withBase("/") }).catch(() => {});
+    // OneSignal registers the same worker with its own query string once notifications are on;
+    // registering it again under the plain name would swap the two back and forth on every visit.
+    navigator.serviceWorker
+      .getRegistration(withBase("/"))
+      .then((reg) => {
+        const current = reg?.active?.scriptURL ?? reg?.installing?.scriptURL ?? reg?.waiting?.scriptURL;
+        if (current?.includes(SERVICE_WORKER)) return;
+        return navigator.serviceWorker.register(withBase(`/${SERVICE_WORKER}`), { scope: withBase("/") });
+      })
+      .catch(() => {});
   }, []);
 }
 

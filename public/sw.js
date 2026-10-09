@@ -1,4 +1,5 @@
-// Service worker: lets the site be installed as an app and keeps working offline.
+// Offline cache, loaded by OneSignalSDKWorker.js (the registered service worker).
+// Lets the site be installed as an app and keep working offline.
 // Pages are fetched fresh from the network when online (so updates show up right away)
 // and served from the cache when offline. Built files under assets/ never change
 // (their names carry a hash), so they are served from the cache first.
