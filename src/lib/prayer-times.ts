@@ -3,6 +3,8 @@
 // Data is deterministic per calendar day, so we bundle it and look up locally.
 
 import data from "@/data/kosovo-prayer-times.json";
+// Džamija Rečane's own times, shared with scripts/schedule-prayer-notifications.mjs
+import recane from "@/data/recane-times.json";
 
 type DayEntry = {
   day: number;
@@ -68,10 +70,10 @@ function addMinutes(hhmm: string, offset: number): string {
  * with the sunrise every day (e.g. sunrise 06:30 -> sabah 05:55). The takvim's own
  * "fajr" column is the start of the sabah time, which is earlier.
  */
-export const SABAH_MINUTES_BEFORE_SUNRISE = 35;
+export const SABAH_MINUTES_BEFORE_SUNRISE = recane.sabahMinutesBeforeSunrise;
 
 /** Podne namaz in Džamija Rečane is prayed at this fixed time every day. */
-export const PODNE_TIME = "13:00";
+export const PODNE_TIME = recane.podne;
 
 export async function fetchPrizrenPrayerTimes(date = new Date()): Promise<PrayerData> {
   const city = "Prizren";

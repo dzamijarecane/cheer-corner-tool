@@ -1,0 +1,25 @@
+name: Prayer notifications
+
+# Schedules today's and tomorrow's prayer-time notifications in OneSignal, which sends each
+# one at the exact time. Runs twice a day so a delayed or skipped run doesn't matter;
+# notifications already scheduled are never sent twice.
+on:
+  schedule:
+    - cron: "17 1 * * *"
+    - cron: "17 13 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/schedule-prayer-notifications.mjs
+        env:
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}

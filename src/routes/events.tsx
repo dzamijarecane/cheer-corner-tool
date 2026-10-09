@@ -81,7 +81,7 @@ function Events() {
           <div className="rounded-xl border border-border/60 bg-secondary/40 p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
             <p className="text-muted-foreground leading-relaxed">
               Najnovije obavijesti, termine i slike objavljujemo na našoj Facebook stranici. Uključite
-              obavještenja i telefon će vam javiti kad objavimo nešto novo.
+              obavještenja i telefon će vam javiti vrijeme svakog namaza i kad objavimo nešto novo.
             </p>
             <div className="flex flex-wrap gap-3">
               <NotificationsButton tone="light" />
