@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Push notifications through OneSignal (onesignal.com). New announcements are written and
 // sent from the OneSignal dashboard (Messages > New Push); this file only lets visitors
@@ -78,7 +78,9 @@ function isStandalone() {
 
 function useNotifications() {
   const [status, setStatus] = useState<Status>("init");
-  const [api, setApi] = useState<OneSignalApi | null>(null);
+  // A ref, not state: OneSignal is a class, and React would call a function passed to a
+  // state setter as an updater ("Cannot call a class constructor without new").
+  const api = useRef<OneSignalApi | null>(null);
 
   useEffect(() => {
     // iPhone only allows notifications from the app installed on the home screen
@@ -97,7 +99,7 @@ function useNotifications() {
       update();
       os.User.PushSubscription.addEventListener("change", update);
       os.Notifications.addEventListener("permissionChange", update);
-      setApi(os);
+      api.current = os;
     });
     return () => {
       alive = false;
@@ -105,14 +107,15 @@ function useNotifications() {
   }, []);
 
   const toggle = async () => {
-    if (!api) return;
+    const os = api.current;
+    if (!os) return;
     setStatus("loading");
     try {
-      if (api.User.PushSubscription.optedIn) await api.User.PushSubscription.optOut();
-      else await api.User.PushSubscription.optIn();
+      if (os.User.PushSubscription.optedIn) await os.User.PushSubscription.optOut();
+      else await os.User.PushSubscription.optIn();
     } finally {
       if (typeof Notification !== "undefined" && Notification.permission === "denied") setStatus("denied");
-      else setStatus(api.User.PushSubscription.optedIn ? "on" : "off");
+      else setStatus(os.User.PushSubscription.optedIn ? "on" : "off");
     }
   };
 
