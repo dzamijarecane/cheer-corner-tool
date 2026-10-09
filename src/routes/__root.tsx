@@ -13,6 +13,7 @@ import { type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "../components/site-chrome";
 import { Motion3D } from "../components/motion-3d";
+import { InstallBanner, useServiceWorker } from "../components/install-app";
 import { SITE_URL, withBase } from "@/lib/utils";
 
 function NotFoundComponent() {
@@ -78,6 +79,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#315c46" },
+      // Installed on a phone's home screen: open full screen, under this name
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-title", content: "Džamija Rečane" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
       { title: "Džamija Rečane | Mjesto ibadeta, učenja i zajednice" },
       { name: "description", content: "Dobrodošli u džamiju Rečane. Dnevni vreme namaza, događaji zajednice, časovi Kur'ana i još mnogo toga." },
       { property: "og:type", content: "website" },
@@ -129,6 +135,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useServiceWorker();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -140,6 +147,7 @@ function RootComponent() {
         <SiteFooter />
       </div>
       <Motion3D />
+      <InstallBanner />
     </QueryClientProvider>
   );
 }
