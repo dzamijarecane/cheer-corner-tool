@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "../components/site-chrome";
 import { Motion3D } from "../components/motion-3d";
 import { InstallBanner, useServiceWorker } from "../components/install-app";
+import { NotificationsPrompt } from "../components/notifications";
 import { SITE_URL, withBase } from "@/lib/utils";
 
 function NotFoundComponent() {
@@ -163,6 +164,7 @@ function RootComponent() {
       </div>
       <Motion3D />
       <InstallBanner />
+      <NotificationsPrompt />
     </QueryClientProvider>
   );
 }
