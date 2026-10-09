@@ -173,3 +173,78 @@ export function NotificationsButton({ tone = "dark" }: { tone?: "dark" | "light"
     </button>
   );
 }
+
+const PROMPT_KEY = "notifications-prompt-dismissed";
+// After "Ne sada", ask again after this many days
+const PROMPT_AGAIN_DAYS = 14;
+
+/**
+ * Card at the top of the screen that suggests turning notifications on, shown when the
+ * installed app (or a computer browser) opens and they are still off. On phones in the
+ * browser the install banner is shown instead, so this waits until the app is installed.
+ */
+export function NotificationsPrompt() {
+  const { status, toggle } = useNotifications();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (status !== "off") {
+      if (status !== "loading") setVisible(false);
+      return;
+    }
+    const wide = window.matchMedia("(min-width: 768px)").matches;
+    if (!isStandalone() && !wide) return;
+    try {
+      const last = Number(localStorage.getItem(PROMPT_KEY) || 0);
+      if (Date.now() - last < PROMPT_AGAIN_DAYS * 86_400_000) return;
+    } catch {
+      // storage blocked: still ask
+    }
+    const t = setTimeout(() => setVisible(true), 1200);
+    return () => clearTimeout(t);
+  }, [status]);
+
+  const later = () => {
+    setVisible(false);
+    try {
+      localStorage.setItem(PROMPT_KEY, String(Date.now()));
+    } catch {
+      // private mode: asks again next time
+    }
+  };
+
+  if (!visible) return null;
+  return (
+    <div
+      className="fixed inset-x-3 top-3 z-50 mx-auto max-w-md animate-in fade-in slide-in-from-top-4 duration-500"
+      role="dialog"
+      aria-label="Uključite obavještenja"
+    >
+      <div className="rounded-2xl border border-white/15 bg-primary p-4 text-primary-foreground shadow-[var(--shadow-soft)]">
+        <div className="flex items-start gap-3">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[var(--gold)] text-primary">
+            <BellIcon className="h-5 w-5" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold leading-snug">Uključite obavještenja</p>
+            <p className="mt-0.5 text-sm text-primary-foreground/75 leading-snug">
+              Telefon će vam javiti vrijeme svakog namaza i novosti iz džamije Rečane.
+            </p>
+          </div>
+        </div>
+        <div className="mt-3 flex justify-end gap-2">
+          <button onClick={later} className="rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground/80 hover:bg-white/10">
+            Ne sada
+          </button>
+          <button
+            onClick={toggle}
+            disabled={status === "loading"}
+            className="rounded-full bg-[var(--gold)] px-5 py-2 text-sm font-semibold text-primary hover:brightness-110 disabled:opacity-60"
+          >
+            {status === "loading" ? "Uključujem…" : "Uključi"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
