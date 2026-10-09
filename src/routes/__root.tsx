@@ -3,12 +3,11 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
-  useRouter,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "../components/site-chrome";
@@ -38,9 +37,26 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: ErrorComponentProps) {
+// Script files that went missing after a new deploy: reloading picks up the new version.
+const CHUNK_ERROR = /dynamically imported module|Importing a module script failed|Failed to fetch|Loading chunk/i;
+const RELOADED_KEY = "reloaded-after-error";
+
+function ErrorComponent({ error }: ErrorComponentProps) {
   console.error(error);
-  const router = useRouter();
+  const message = error instanceof Error ? error.message : String(error);
+
+  useEffect(() => {
+    if (!CHUNK_ERROR.test(message)) return;
+    try {
+      // Reload once per minute at most, so a real outage doesn't loop
+      const last = Number(sessionStorage.getItem(RELOADED_KEY) || 0);
+      if (Date.now() - last < 60_000) return;
+      sessionStorage.setItem(RELOADED_KEY, String(Date.now()));
+    } catch {
+      return;
+    }
+    window.location.reload();
+  }, [message]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -53,10 +69,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
+            onClick={() => window.location.reload()}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Pokušaj ponovo
@@ -68,6 +81,8 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             Nazad na početnu
           </a>
         </div>
+        {/* Shown small so a screenshot tells us what went wrong */}
+        <p className="mt-8 text-xs text-muted-foreground/70 break-words">{message}</p>
       </div>
     </div>
   );
