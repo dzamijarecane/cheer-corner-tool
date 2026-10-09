@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "@tanstack/react-router";
 import { withBase } from "@/lib/utils";
 import { SERVICE_WORKER } from "./notifications";
 
@@ -43,7 +44,7 @@ function readState(): InstallState {
   return { prompt: deferred, ios, installed };
 }
 
-function useInstall(): InstallState | null {
+export function useInstall(): InstallState | null {
   // null until mounted, so the server render and hydration match
   const [state, setState] = useState<InstallState | null>(null);
   useEffect(() => {
@@ -57,7 +58,7 @@ function useInstall(): InstallState | null {
   return state;
 }
 
-async function runPrompt(prompt: InstallPromptEvent) {
+export async function runPrompt(prompt: InstallPromptEvent) {
   await prompt.prompt();
   await prompt.userChoice;
   deferred = null;
@@ -81,21 +82,12 @@ export function useServiceWorker() {
   }, []);
 }
 
-function ShareIcon({ className = "" }: { className?: string }) {
+export function ShareIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
       <path d="M12 3v12M8 7l4-4 4 4" />
       <path d="M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1" />
     </svg>
-  );
-}
-
-function IosSteps() {
-  return (
-    <>
-      Dodirnite <ShareIcon className="inline h-4 w-4 -mt-1" /> <strong>Podijeli</strong>, pa{" "}
-      <strong>Dodaj na početni ekran</strong>.
-    </>
   );
 }
 
@@ -114,24 +106,31 @@ export function InstallAppFooter() {
           Instaliraj aplikaciju
         </button>
       ) : (
-        <p className="max-w-sm text-sm text-primary-foreground/75 leading-relaxed">
-          <span className="font-semibold text-[color:var(--gold)]">Instalirajte na telefon: </span>
-          <IosSteps />
-        </p>
+        <Link
+          to="/instaliraj"
+          className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-5 py-2.5 text-sm font-semibold text-primary transition hover:brightness-110"
+        >
+          <PhoneIcon className="h-4 w-4" />
+          Instaliraj na iPhone
+        </Link>
       )}
     </div>
   );
 }
 
 const DISMISS_KEY = "install-banner-dismissed";
+// After closing the bar, offer it again after this many days
+const DISMISS_DAYS = 7;
 
 /** Small bar at the bottom of the screen on phones, offering to install the site as an app. */
 export function InstallBanner() {
   const s = useInstall();
+  const onGuide = useLocation().pathname.replace(/\/$/, "").endsWith("/instaliraj");
   const [dismissed, setDismissed] = useState(true);
   useEffect(() => {
     try {
-      setDismissed(localStorage.getItem(DISMISS_KEY) === "1");
+      const at = Number(localStorage.getItem(DISMISS_KEY) || 0);
+      setDismissed(Date.now() - at < DISMISS_DAYS * 86_400_000);
     } catch {
       setDismissed(false);
     }
@@ -139,13 +138,13 @@ export function InstallBanner() {
   const close = () => {
     setDismissed(true);
     try {
-      localStorage.setItem(DISMISS_KEY, "1");
+      localStorage.setItem(DISMISS_KEY, String(Date.now()));
     } catch {
       // private mode: the banner just comes back next visit
     }
   };
 
-  if (!s || dismissed || s.installed || (!s.prompt && !s.ios)) return null;
+  if (!s || dismissed || onGuide || s.installed || (!s.prompt && !s.ios)) return null;
   return (
     <div className="fixed inset-x-3 bottom-3 z-50 md:hidden" role="dialog" aria-label="Instalirajte aplikaciju">
       <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-primary px-4 py-3 text-primary-foreground shadow-[var(--shadow-soft)]">
@@ -153,16 +152,20 @@ export function InstallBanner() {
         <div className="min-w-0 flex-1 text-sm leading-snug">
           <p className="font-semibold">Džamija Rečane na telefonu</p>
           <p className="text-primary-foreground/75 text-xs mt-0.5">
-            {s.prompt ? "Vreme namaza i kibla, i bez interneta." : <IosSteps />}
+            {s.prompt ? "Vreme namaza i kibla, i bez interneta." : "Vreme namaza i obavještenja za namaz."}
           </p>
         </div>
-        {s.prompt && (
+        {s.prompt ? (
           <button
             onClick={() => s.prompt && runPrompt(s.prompt).then(close)}
             className="shrink-0 rounded-full bg-[var(--gold)] px-4 py-2 text-sm font-semibold text-primary"
           >
             Instaliraj
           </button>
+        ) : (
+          <Link to="/instaliraj" className="shrink-0 rounded-full bg-[var(--gold)] px-4 py-2 text-sm font-semibold text-primary">
+            Pokaži kako
+          </Link>
         )}
         <button onClick={close} aria-label="Zatvori" className="shrink-0 p-1 text-xl leading-none text-primary-foreground/70">
           ×
