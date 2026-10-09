@@ -1,11 +1,24 @@
 {
+  "id": "./",
   "name": "Džamija Rečane",
   "short_name": "Džamija Rečane",
-  "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
-  ],
+  "description": "Vreme namaza, kibla, Kur'an i dove, kalendar i događaji džamije u Rečanu.",
+  "lang": "bs",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#315c46",
   "background_color": "#f7f4ec",
-  "display": "browser"
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Vreme namaza", "url": "./prayer-times/", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Kibla i tesbih", "url": "./qibla/", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Kur'an i dove", "url": "./quran/", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
+  ]
 }
