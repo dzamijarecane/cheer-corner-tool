@@ -89,12 +89,10 @@ function InstallPage() {
                       To je kvadrat sa strelicom prema gore, na traci na dnu ekrana. Ako ga ne vidite, dodirnite{" "}
                       <strong>⋯</strong> (tri tačke) pa <strong>Podijeli</strong>.
                     </Step>
-                    <Step n={2} title="Dodaj na početni ekran" mock={<ShareSheet />}>
-                      Skrolujte malo dolje u meniju i dodirnite <strong>Dodaj na početni ekran</strong> (na engleskom{" "}
-                      <em>Add to Home Screen</em>).
-                    </Step>
-                    <AddStep n={3} />
-                    <OpenStep n={4} />
+                    <MoreStep n={2} />
+                    <HomeScreenStep n={3} />
+                    <AddStep n={4} />
+                    <OpenStep n={5} />
                   </>
                 )}
                 {tab === "chrome" && (
@@ -102,12 +100,10 @@ function InstallPage() {
                     <Step n={1} title="Dodirnite dugme Podijeli" mock={<ChromeBar />}>
                       U Chromeu je dugme <strong>Podijeli</strong> gore desno, u adresnoj traci pored adrese.
                     </Step>
-                    <Step n={2} title="Dodaj na početni ekran" mock={<ShareSheet />}>
-                      Dodirnite <strong>Dodaj na početni ekran</strong> (<em>Add to Home Screen</em>). Ako ga nema, dodirnite{" "}
-                      <strong>Više</strong> pa ga potražite na listi.
-                    </Step>
-                    <AddStep n={3} />
-                    <OpenStep n={4} />
+                    <MoreStep n={2} />
+                    <HomeScreenStep n={3} />
+                    <AddStep n={4} />
+                    <OpenStep n={5} />
                   </>
                 )}
                 {tab === "android" && (
@@ -156,6 +152,23 @@ function Step({ n, title, mock, children }: { n: number; title: string; mock: Re
       </div>
       <div aria-hidden className="select-none">{mock}</div>
     </li>
+  );
+}
+
+function MoreStep({ n }: { n: number }) {
+  return (
+    <Step n={n} title="Dodirnite ⋯ Više" mock={<MoreRow />}>
+      U meniju koji se otvori dodirnite <strong>⋯</strong> (tri tačke, <em>Više</em> ili <em>More</em>).
+    </Step>
+  );
+}
+
+function HomeScreenStep({ n }: { n: number }) {
+  return (
+    <Step n={n} title="Dodaj na početni ekran" mock={<ShareSheet />}>
+      Na listi dodirnite <strong>Dodaj na početni ekran</strong> (na engleskom <em>Add to Home Screen</em>). Ako ga ne vidite,
+      skrolujte malo dolje.
+    </Step>
   );
 }
 
@@ -220,6 +233,36 @@ function ChromeBar() {
         </Tap>
       </div>
       <div className="mt-3 h-14 rounded-lg bg-white/70" />
+    </Phone>
+  );
+}
+
+function MoreRow() {
+  const app = "flex flex-col items-center gap-1 text-[9px] text-black/50";
+  return (
+    <Phone>
+      <div className="rounded-xl bg-white p-3">
+        <div className="flex items-start justify-between">
+          <span className={app}>
+            <span className="h-9 w-9 rounded-full bg-[#34c759]" />
+            Poruke
+          </span>
+          <span className={app}>
+            <span className="h-9 w-9 rounded-full bg-[#7360f2]" />
+            Viber
+          </span>
+          <span className={app}>
+            <span className="h-9 w-9 rounded-full bg-[#25d366]" />
+            WhatsApp
+          </span>
+          <span className={`${app} font-semibold text-black/80`}>
+            <Tap>
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-[#e5e5ea] text-lg font-bold leading-none">⋯</span>
+            </Tap>
+            Više
+          </span>
+        </div>
+      </div>
     </Phone>
   );
 }
